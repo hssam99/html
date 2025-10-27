@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ✅ 구글 폰트: Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" 
+    rel="stylesheet">
+
+    <!-- ✅ 폰트 적용 -->
+    <style>
+    html, body {
+      font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+                   "Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic",
+                   "Segoe UI", Roboto, Arial, sans-serif !important;
+      /* margin: 40px; */
+      /* line-height: 1.6; */
+    }
+    * { font-family: inherit; } /* 모든 요소에 상속 */
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>공지사항</h1>
+    <hr>
+    <form action="">
+        <p>
+             작성자 <input type="text" name="user" value = "홍수민" readonly><br>
+             제목 <input type="text" name="title" placeholder="제목을 입력하세요">
+             <input type="checkbox" name = "chk" id = "ch" value = "공지">
+             <label for="ch">공지</label>
+             <br>
+        </p>
+        <p>
+            내용<br>
+            <textarea name="comment" cols="50" rows="10"></textarea>
+        </p>
+        <hr>
+        <p>
+            <h2>파일첨부</h2>
+            <input type="text" name="" disabled><input type="file" name="file1" id=""><br>
+            <input type="text" name="" disabled><input type="file" name="file2" id=""><br>
+            <input type="text" name="" disabled> <input type="file" name="file3" id=""><br>
+    
+        </p>
+        <pre>
+            <small>
+    - 파일 확장자가 zip, pdf, hwp, doc, docx, txt, xls, xlsx, ppt, pptx, jpg, jpeg, gif, png, egg, dwg, max, psd, ai인 파일만 업로드하실 수 있습니다. (파일명은 특수문자 *, #, $, & 등 공백 사용 금지)
+    - 파일 업로드 시, 첨부파일 1개당 200MB 까지 가능합니다.
+            </small>
+        </pre>
+        <hr>
+        <input type="reset" value="취소">
+        <input type="submit" value="등록">
+    </form>
+</body>
+</html>

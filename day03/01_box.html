@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<!-- 
+    box-sizing : box의 크기를 지정하는 속성
+    width : 컨텐츠의 가로 길이
+    box sizing에 따라 width 크기가 컨텐츠의 가로 길이가 될수도, 박스 전체의 가로 길이가 될 수도 있음
+     - border-box : width = 컨텐츠 가로 + 패딩 (왼+오) + 테두리 (왼+오)
+     - content-box : width = 컨텐츠 가로
+     width = 100px / padding = 5px / border = 1px
+-->
+     <style>
+        @font-face {
+            font-family: basic;
+            src: url(../font/IBMPlexSansKR-Regular.ttf);
+        }
+
+        table{
+            font-family: basic;
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .box1{
+            background-color: violet;
+            box-sizing: border-box;
+        }
+
+        .box2{
+            background-color: aquamarine;
+            box-sizing: content-box;
+        }
+        
+     </style>
+
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    
+</body>
+</html>

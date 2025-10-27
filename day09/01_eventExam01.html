@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <fieldset>
+        <legend>할인율 구하기</legend>
+        가격 : <input type="text" id="price">원<br>
+        할인율 : <input type="text" id="rate">%<br>
+        <!-- addEventListener -->
+        <button id = "getRateBtn">할인가격 계산</button>
+
+        <!-- onclick -->
+        <button onclick="getDiscountPrice()">할인가격계산2</button>
+    </fieldset>
+
+    <h3 id="printResult"></h3>
+
+    <script>
+        function calcDiscount(price, rate){
+            return price*(100-rate)/100;
+        }
+
+
+        
+        document.getElementById('getRateBtn').addEventListener('click',
+        function(){
+            let user_price = Number(document.getElementById('price').value);
+            let user_rate = Number(document.getElementById('rate').value);
+            let result = calcDiscount(user_price, user_rate)
+            document.getElementById('printResult').innerText=`가격: ${user_price}원 / 할인율: ${user_rate}% / 할인가: ${result}원 / 지불금액: ${user_price-result}원`;
+        });
+
+        function getDiscountPrice(){
+            let user_price = Number(document.getElementById('price').value);
+            let user_rate = Number(document.getElementById('rate').value);
+            let result = calcDiscount(user_price, user_rate)
+            document.getElementById('printResult').innerText=`버튼2. 할인가:${result}원`;
+        }
+
+
+
+
+    </script>
+    
+</body>
+</html>

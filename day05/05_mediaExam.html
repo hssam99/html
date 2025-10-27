@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        @font-face {font-family: notosanskr; src: url(../font/NotoSansKR-VariableFont_wght.ttf);}
+        body{
+            font-family: notosanskr;
+            margin:0;
+            padding: 0;
+        }
+
+        .menu-container{
+            position:relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;        
+        }
+        
+        .menu-btn{
+            /* 이게 뭐지? */
+            position:absolute;
+            left: 15px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-title{
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+        }
+
+
+        /* main */
+
+
+        .main-img{
+            background-image: url(../images/newyork_3.jpg);
+            height: 300px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .discription{
+            height: 300px;
+            background-color: white;
+            padding-left: 40px;
+            /* 이게 뭘까..? */
+            /* padding을 줘도 전체 폭이 늘어나지 않음 */
+            box-sizing: border-box;
+
+        }
+
+        .discription>p:first-child{
+            font-weight: 500;
+            color: rgb(63, 63, 63);
+            font-size: 20px;
+            margin: 30px 0;
+        }
+        .discription>p:nth-child(2){
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .discription>p:last-child{
+            font-size: 16px;
+        }
+
+        .sub-img{
+            height: 350px;
+            background-image: url(../images/newyork.jpeg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .sub-img2{
+            height: 300px;
+            background-image: url(../images/newyork_2.jpg);
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .sub-img2>a{
+            text-decoration: none;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 40px;
+        }
+
+        .sub-img3{
+            height: 250px;
+            background-image: url(../images/newyork_4.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
+        @media screen and (min-width: 800px){
+            .main-img{
+                height: 400px;
+            }
+
+            .discription{
+                height: 200px;
+            }
+
+            .sub-img{
+                height: 500px;
+                width: 50%;
+                float: left;
+            }
+            
+            .sub-img2{
+                height: 250px;
+                width: 50%;
+                float:right;
+                line-height: 250px;
+            }
+
+            .sub-img3{
+                height: 250px;
+                width: 50%;
+                float:right;
+            }
+        }
+
+
+        @media screen and (min-width:1200px){
+            .main-img{
+                height: 800px;
+                width: 50%;
+                float: left;
+            }
+
+            .discription{
+                height: 400px;
+                width: 50%;
+                float: right;
+            }
+
+            .sub-img{
+                height: 400px;
+                width: 25%;
+                float: left;
+            }
+
+            .sub-img2{
+                height: 200px;
+                width: 25%;
+                float:right;
+                line-height: 200px;
+            }
+            .sub-img3{
+                height: 200px;
+                width: 25%;
+                float:right;
+            }
+        }
+
+        
+
+        
+    </style>
+
+
+</head>
+<body>
+
+    <div class="menu-container">
+        <button class="menu-btn">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" color="#000000">
+            <path d="M3 5H21" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 12H21" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 19H21" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </button>
+
+        <div class="menu-title">TIFFANY HONG</div>
+    </div>
+    
+
+    <div class="main-container">
+        <div class="main-img"></div>
+        <div class="discription">
+            <p>Portfolio</p>
+            <p>Make Hardware Soft</p>
+            <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorun" by Cicero are also</p>
+        </div>
+        <div class="sub-img"></div>
+        <div class="sub-img2">
+            <a href="">VIEW MORE</a>
+        </div>
+        <div class="sub-img3"></div>
+    </div>
+    <div class="credit-container">
+    </div>
+    
+</body>
+</html>

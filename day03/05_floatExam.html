@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        p-box : 500*500
+        box : 부모안에 3등분으로 채우기
+    -->
+    <style>
+        .p-box{
+            border: 1px solid black;
+            width: 500px;
+            height: 500px;
+        }
+
+        .box{
+            float: left;
+            width: calc(100%/3);
+            height: 100%;
+        }
+
+        .box1{
+            background-color: aqua;
+        }
+        .box2{
+            background-color:antiquewhite;
+        }
+        .box3{
+            background-color:blueviolet;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="p-box">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>float 예제</title>
+  <style>
+    .container {
+      width: 500px;
+      border: 2px solid #333;
+      padding: 10px;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      float: left;          /* ← 이미지를 왼쪽에 띄움 */
+      margin-right: 15px;   /* 텍스트와의 간격 */
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    /* float 해제 예시 */
+    .clear {
+      clear: both;          /* float 된 요소 아래로 내림 */
+      border-top: 1px solid #aaa;
+      margin-top: 10px;
+      padding-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="../images/dog.jpg" alt="예시 이미지">
+    <p>
+      이 이미지는 <strong>float: left;</strong> 속성으로 왼쪽에 배치되었습니다.
+      따라서 텍스트가 오른쪽으로 자연스럽게 흘러들어가며,
+      마치 신문 기사처럼 레이아웃이 만들어집니다.
+      CSS에서 float은 원래 이미지를 텍스트와 함께 배치하려고 만든 기능입니다.
+    </p>
+
+    <div class="clear">
+      여기는 clear: both; 가 적용되어 이미지 아래로 내려온 영역입니다.
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수의 파라미터와 리턴타입의 사용 </h1>
+    <!-- 
+        파라미터의 개수는 제한이 없으나, 많으면 관리 힘듬
+        파라미터 타입도 제한 없음
+        파리미터의 변수명은 외부 변수명과 같, 달 상관없음
+        return 유무에 따라 값을 리턴 받을 수도, 그냥 종료도 가능
+        return이 종료 시점을 결정 
+    -->
+
+    <script>
+        let myName = '홍수민';
+
+        function callName(name){
+            let yourName = '순이';
+            console.log('파라미터'+name);
+            console.log('funcion 내부 변수'+yourName);
+            console.log('funcion 외부 변수'+myName);
+        }
+
+        callName(myName);
+
+        let myName2 = '이재훈';
+
+        callName(myName2);
+
+
+        // 표현식 함수 / 화살표 함수
+        // 표현식 함수 : react, 라이브러리 js에서 사용이 많이 됨.
+
+
+        const myFunc = function(myName){
+            return `Hello! ${myName}`;
+        }
+
+        console.log(myFunc(myName));
+
+        let result = myFunc(myName);
+        console.log(result);
+
+
+        // 화살표 함수(arrow Function)
+        // 굉장히 많이 사용
+
+        const arrowFunc = (param1, param2) => {
+            return param1+param2;
+        }
+
+        let arrowResult = arrowFunc(1,2);
+        console.log(arrowResult);
+
+        const arrowFunc2 = (p1,p2) => (p1+p2);
+        console.log(arrowFunc2(5,10));
+
+        const arrowFunc3 = (p1,p2) => {
+            console.log(p1+p2);
+        }
+
+        arrowFunc3(300,500);
+
+        // 함수생성
+        // 파라미터로 이름, 취미 받아서 출력
+
+        const myHobby = (name, hobby) => {
+            console.log(` ${name}의 취미는 ${hobby} 입니다.`);
+        }
+
+        const myHobby3 = function(name, hobby){
+            console.log(`${name} enjoys doing ${hobby}`);
+        }
+
+        
+        function myHobby2(name, hobby){
+            console.log(`${name} enjoys doing ${hobby}`);
+        }
+
+
+
+        myHobby('딜런', '히포그리프 타기');
+        myHobby2('tony', 'crucio');
+
+
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        @keyframes bounce{
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-16px); } /* 위로 16px */
+        }
+
+        .bounce-wrap{
+            position: fixed;
+            left: 50%;
+            bottom: 0px; /* 맨 밑에서 */
+            /* transform: translateX(-50%); */
+        }
+
+        .bounce{
+            /* animation: bounce 0.8s ease-in-out infinite; */
+            animation-name: bounce;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            display: inline-block;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="bounce-wrap">
+        <div class="bounce">hihihihi</div>
+    </div>
+    
+</body>
+</html>

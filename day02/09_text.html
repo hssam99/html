@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        text : 글자 상태
+         - text-indent : 들여쓰기 (문장에서 첫 문단만 들여쓰기)
+         - text-align: 정렬 / left, right, center, justify(양쪽 맞추기)
+         - text-decoration : 선긋기 / none, underline, overline(위), line-through(취소선)
+    -->
+    <!-- 
+        css 단위
+        px : pixel 픽셀
+        % : 퍼센트 (부모기준 %)
+        em : 배수, 부모기준
+        rem : 배수, 문서값을 기준으로 배수
+        cm / mm / in (1in = 96px)
+        pt : 포인터(1pt = 1/72in), pc : 피카소 (1pc=12pt)
+        deg : 각도
+    -->
+    <!-- 
+        text-overlflow : 텍스트가 범위를 넘어가는 경우. (...) ellipsis
+        with-space : 글자가 넘어가면 넘어간 글자를 어떻게 처리할 것인지
+            - nowrap : 줄바꿈없이 한줄로 처림
+            - wrap : 줄바꿈
+        overflow : 요소가 넘어가면 어떻게 처리할 것인지
+            - hidden : 숨김
+            - scroll : 스크롤바 생성
+            - auto
+
+    -->
+    
+
+    <style>
+        @font-face{
+            font-family: F1-regular;
+            src: url(../font/Formula1-Regular_web_0.ttf);
+        }
+
+        p{
+            font-family: F1-regular;
+            font-weight: 400;
+            font-style: normal;
+
+            text-indent: 15px; /* 들여쓰기 */
+            text-align: left;
+            /* text-decoration: underline; */
+        }
+        .line{
+            width: 300px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: wrap;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <p class="line">
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+        formula1
+    </p>
+    
+</body>
+</html>

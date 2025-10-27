@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>string: 가장 많이 다루는 데이터 타입</h1>
+    <!-- 
+        j- java에서의 string method와 거의 유사함.
+        - 문자 데이터는 index(0부터 시작)을 가지고 있음
+        - 문자열 값 내에서 <br> 개행은 하지 않는 것이 좋다.
+    -->
+
+    <script>
+        let padText = 'abc';
+        // 10 전체 길이
+        console.log(padText.padStart(10,'-'));
+
+        let rNum = '010101-3123456';
+        console.log(rNum.slice(0, rNum.indexOf('-')+2).padEnd(rNum.length,'*'));
+
+        //성별
+        let id = rNum.charAt(rNum.indexOf('-')+1);
+        console.log((id==='1' | id==='3')?'male':'female');
+
+
+
+// 문자열 함수
+
+        let fullFileName = '20251024_javascript.String_method.html';
+    
+        // 작성일자만 추출: 20251024
+        let fileDate = fullFileName.slice(0,fullFileName.indexOf('_'));
+        console.log(fileDate);
+
+
+        // 파일 이름 추출 : javascript.String_method
+        let fileName = fullFileName.slice(fullFileName.indexOf('_')+1, fullFileName.lastIndexOf('.'));
+        console.log(fileName);
+
+        // 확장자 추출: html
+        let fileType = fullFileName.slice(fullFileName.lastIndexOf('.')+1);
+        console.log(fileType);
+        
+
+    </script>
+</body>
+</html>

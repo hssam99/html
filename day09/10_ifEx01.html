@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>오늘은????</h1>
+    <button id="btn">today</button>
+    <h1 id="result"></h1>
+    <!-- 오늘 날짜와 요일 출력 -->
+    <!-- 2025.10.24. (금) -->
+
+    <script>
+
+        document.getElementById('btn').addEventListener('click', function(){
+            let today = new Date();
+            // console.log(today);
+            // console.log(today.getMonth()+1);
+            // console.log(today.getDate());
+            // console.log(today.getDay());
+
+            console.log(today);
+
+            const year = today.getFullYear();
+            console.log(year);
+            const month = today.getMonth()+1;
+            console.log(month);
+            const date = today.getDate();
+            console.log(date);
+            const dayEng = today.toDateString().slice(0, 3); // Fri
+
+            const dayMap = {
+            Sun: '일',
+            Mon: '월',
+            Tue: '화',
+            Wed: '수',
+            Thu: '목',
+            Fri: '금',
+            Sat: '토'
+            };
+
+            const dayKor = dayMap[dayEng];
+            // console.log(dayKor); // 금
+           
+            document.getElementById('result').innerText=`${year}.${month}.${date}. (${dayKor})`;
+
+        })
+    </script>
+
+
+</body>
+</html>

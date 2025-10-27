@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta charset="utf-8" />
+<title>Flappy-mini</title>
+<style>
+  body{margin:0;display:grid;place-items:center;height:100vh;background:#87ceeb;font-family:sans-serif}
+  canvas{background:linear-gradient(#ccefff 70%, #8ed08e 70%);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+  .hud{position:fixed;top:12px;left:50%;transform:translateX(-50%);color:#034;font-weight:700}
+  .hint{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);color:#034;font-size:12px;opacity:.8}
+</style>
+<canvas id="game" width="480" height="320"></canvas>
+<div class="hud">점수: <span id="score">0</span></div>
+<div class="hint">Space/Click: 점프 · R: 리셋</div>
+<script>
+const cvs = document.getElementById('game'), ctx = cvs.getContext('2d');
+const W=cvs.width, H=cvs.height;
+let bird, pipes, score, running=true;
+
+function reset(){
+  bird = {x:90, y:H/2, vy:0, r:12};
+  pipes = [];
+  score = 0;
+  spawnPipes();
+  running = true;
+}
+function spawnPipes(){
+  let x = W + (pipes.length? pipes[pipes.length-1].x + 200 : 0);
+  for(let i=0;i<3;i++){
+    const gap=90, topH = 40 + Math.random()*(H-160);
+    pipes.push({x:x+i*160, w:48, topH, gap});
+  }
+}
+function flap(){ if(!running) return; bird.vy = -5.5; }
+function update(dt){
+  if(!running) return;
+  bird.vy += 0.28; bird.y += bird.vy;
+
+  // 파이프 이동
+  for(const p of pipes){ p.x -= 2.2; }
+  // 필요시 새 파이프 추가
+  if(pipes[0].x + pipes[0].w < -10){ pipes.shift(); score++; document.getElementById('score').textContent=score; }
+  if(pipes[pipes.length-1].x < W-160) spawnPipes();
+
+  // 충돌 판정
+  if(bird.y-bird.r<0 || bird.y+bird.r>H) running=false;
+  for(const p of pipes){
+    if(bird.x+bird.r>p.x && bird.x-bird.r<p.x+p.w){
+      if(bird.y-bird.r < p.topH || bird.y+bird.r > p.topH + p.gap){ running=false; }
+    }
+  }
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // 파이프
+  ctx.fillStyle="#2e7d32";
+  for(const p of pipes){
+    ctx.fillRect(p.x, 0, p.w, p.topH);
+    ctx.fillRect(p.x, p.topH+p.gap, p.w, H-(p.topH+p.gap));
+  }
+  // 새
+  ctx.fillStyle="#ffeb3b"; ctx.beginPath(); ctx.arc(bird.x,bird.y,bird.r,0,Math.PI*2); ctx.fill();
+  ctx.strokeStyle="#333"; ctx.stroke();
+  if(!running){
+    ctx.fillStyle="rgba(0,0,0,.6)"; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle="#fff"; ctx.font="bold 20px sans-serif"; ctx.textAlign="center";
+    ctx.fillText("게임 오버 — R로 다시 시작", W/2, H/2);
+  }
+}
+let last=0;
+function loop(t){
+  const dt=(t-last)/16; last=t;
+  update(dt); draw();
+  requestAnimationFrame(loop);
+}
+reset(); requestAnimationFrame(loop);
+
+// 입력
+addEventListener('keydown', e=>{
+  if(e.code==='Space'){ e.preventDefault(); flap(); }
+  if(e.key==='r' || e.key==='R'){ reset(); }
+});
+cvs.addEventListener('pointerdown', flap);
+</script>
+</html>

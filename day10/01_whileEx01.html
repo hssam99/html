@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+
+    <style>
+        table{
+            border-collapse: collapse; /* 셀 사이 간격 없애기 */
+            width: 1000px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        th, td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        thead th{
+            background-color: rgb(179, 255, 2);
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>구구단 전체 출력</h1>
+    <!-- <input type="text" placeholder="단을 입력하세요"> -->
+    <button id="printGugu">출력하기</button>
+    <table id = 'gugudan'></table>
+
+
+
+    <!-- 
+        - () 가 있을 때 : 즉시 실행되어 그 반환값이 전달
+        - () 가 없을 때 : 함수 그 자체 (함수 객체)가 전달
+    
+    
+    
+    
+    -->
+
+    <script>
+        function printGugu(){
+            let i = 2;
+            let str = '';
+
+
+            // 단 위에 추가하기
+            str += `<thead>`;
+            str += `<tr>`;
+            while(i<10){
+                str+=`<th>${i}단</th>`;
+                i++;
+            }
+            str += `</tr>`;
+            str += `</thead>`;
+
+
+            str += `<tbody>`
+            i = 1;
+            while(i<10){
+                let j = 2;
+                str += `<tr>`;
+                while(j<10){
+                    str+=`<td>${j} * ${i} = ${i*j}</td>`;
+                    j++;
+                }
+                str += `</tr>`;
+                i++;
+            }
+            str += `</tbody>`;
+    
+            document.getElementById('gugudan').innerHTML = str;
+        }
+
+        document.getElementById('printGugu').addEventListener('click', printGugu);
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @font-face{
+            font-family: ibmregular;
+            /* src: url(../font/NotoSansKR-VariableFont_wght.ttf); */
+            src: url(../font/IBMPlexSansKR-Regular.ttf);
+        }
+
+
+        table{
+            font-family: ibmregular;
+            width: 60%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        table>thead>tr, table>tfoot>tr{
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+            background-color: chartreuse;
+            height: 35px;
+        }
+        
+        tr{
+            height: 30px;
+        }
+        
+        tbody>tr:nth-child(2n){
+            background-color: rgb(233, 233, 233);
+        }
+
+        tbody>tr:hover{
+            background-color: rgb(232, 255, 210);
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <table>
+            <caption>성적표</caption>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>성적</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>김철수</td>
+                    <td>95</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>이영희</td>
+                    <td>88</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>박민수</td>
+                    <td>76</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>최지우</td>
+                    <td>76</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>박민수</td>
+                    <td>76</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <th colspan="2">합계</th>
+                <th>???</th>
+            </tfoot>
+        </table>
+</div>
+<div>
+    <br>
+    <br>
+    <br>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>작성자</td>
+                <td>날짜</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>게시글입니다</td>
+                <td>홍길동</td>
+                <td>2020-11-15</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>게시글입니다</td>
+                <td>홍길동</td>
+                <td>2020-11-15</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>게시글입니다</td>
+                <td>홍길동</td>
+                <td>2020-11-15</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>게시글입니다</td>
+                <td>홍길동</td>
+                <td>2020-11-15</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>게시글입니다</td>
+                <td>홍길동</td>
+                <td>2020-11-15</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>

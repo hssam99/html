@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .container{
+            width: 300px;
+            margin: auto; /* auto - 가운데로 오게 하기*/
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .top, .bottom{
+            width: 90%;
+            height: 50px;
+            border: 2px solid black;
+            margin: 10px auto;
+            line-height: 50px;
+            font-size: 20pt;
+        }
+
+        .mid{
+            width: 90%;
+            margin: auto;
+            height: 270px;
+            border: 2px solid black;
+            position:relative
+        }
+
+        .red, .green, .blue{ 
+            width: 100px;
+            height: 100px;
+            box-shadow: 5px 5px 10px rgb(225, 225, 225); /* x, y, 그림자 크기, 색상*/
+            position: absolute; /* relative 기준으로 위치를 잡을게요 */ 
+        }
+
+        .red{
+            top: 40px;
+            left: 40px;
+            background-color: red;
+            z-index: 3;
+        }
+
+        .green{
+            top: 80px;
+            left: 80px;
+            background-color: green;
+            z-index: 2;
+        }
+
+        .blue{
+            top: 120px;
+            left: 120px;
+            background-color: blue;
+        }
+
+
+
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="top">TEXT</div>
+        <div class="mid">
+            <div class="red"></div>
+            <div class="green"></div>
+            <div class="blue"></div>
+        </div>
+        <div class="bottom">TEXT</div>
+    </div>
+    
+</body>
+</html>
