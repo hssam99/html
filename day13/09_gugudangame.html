@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #questionCount {
+            appearance: none;       /* 표준 */
+            -webkit-appearance: none; /* Safari / iOS */
+            -moz-appearance: none;  /* Firefox */
+
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 0;
+            padding: 6px 25px; /* 오른쪽 공간 확보 */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 8px center; /* 화살표 위치 */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <select id="questionCount">
+        <option value="5">5문제</option>
+        <option value="10">10문제</option>
+        <option value="15">15문제</option>
+        <option value="20">20문제</option>
+    </select>
+    <button>문제 출제</button>
+    <ul>
+        <li><span>1.</span><span>`${num1}*$num2 = `</span><input type="text" id="userInputField"></li>
+
+    </ul>
+    <button>정답 확인</button>
+    <h3 id="resultField"></h3>
+
+
+    <script>
+
+    </script>
+</body>
+</html>

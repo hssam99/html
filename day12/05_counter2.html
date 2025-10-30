@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "plusBtn">+</button>
+    <h2 id="currNum">0</h2>
+    <button id = "minusBtn">-</button>
+    <script>
+        const currNum = document.getElementById('currNum');
+        const plusBtn = document.getElementById('plusBtn');
+        const minusBtn = document.getElementById('minusBtn');
+
+        plusBtn.addEventListener('click', () =>{
+            let num = Number(currNum.innerText);
+            num += 1;
+            currNum.innerText = num;
+
+            // innerText와 textContent 차이
+            // innerText : 스타일이 적용된 최종 화면에 보이는 텍스트만 가져옴, 성능이 느림
+            // textContent : 숨겨진 텍스트 포함 모든 텍스트를 가져옴, 성능이 빠름
+
+            console.log(currNum.innerText);
+            console.log(currNum.textContent);
+        });
+
+        minusBtn.addEventListener('click', () =>{
+            let num = Number(currNum.innerText);
+            if(num <= 0){
+                alert('0 이하로는 감소 불가');
+                return;
+            }
+            num -= 1;
+            currNum.innerText = num;
+        });
+    </script>
+</body>
+</html>

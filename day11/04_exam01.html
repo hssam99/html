@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+    <style>
+
+        body{
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1,h2,h3{
+            text-align: center;
+            margin: 0;
+        }
+
+        button{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .play_btn img{
+            width: 150px;
+            height: 150px;
+        }
+
+        .user_choice_btn img, .com_choice_btn img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .container{
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .player, .result, .btn{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            border-radius: 50px;
+
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 10px rgb(222, 222, 222);
+        }
+
+        .player{
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .player-box{
+            display: flex;
+            gap: 150px;
+            justify-content: center;
+        }
+
+        .user-box, .com-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game_result{
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .btn{
+            gap: 20px;
+        }
+
+        .result {
+            flex-direction: column;
+            gap: 0;
+        }
+        .result h2 {
+            margin-bottom: 40px;
+        }
+
+        .scoreboard{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .myData{
+            display: flex;
+            gap: 30px;
+        }
+        
+        .myWinRate{
+            margin-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container btn">
+        <h1>🕹 가위바위보 게임 🕹</h1>
+        <h3>버튼을 클릭하여 가위바위보를 선택하세요!</h3>
+        <div class="btn-box">
+            <button class="play_btn"><img src="../images/rock.png" alt="" id = "rock"></button>
+            <button class="play_btn"><img src="../images/scissors.png" alt="" id="scissors"></button>
+            <button class="play_btn"><img src="../images/paper.png" alt="" id="paper"></button>
+        </div>
+    </div>
+
+    <div class="container player">
+        <div class="player-box">
+            <div class="user-box">
+                <h2>😀 사용자 <span id="user_choice"></span></h2>
+                <div id="user_choice_btn" class="user_choice_btn"></div>
+            </div>
+            <div class="com-box">
+                <h2>👾 컴퓨터 <span id="com_choice"></span></h2>
+                <div id="com_choice_btn" class="com_choice_btn"></div>
+            </div>
+        </div>
+        <span id="game_result" class="game_result"></span>
+    </div>
+
+    <div class="container result">
+        <h2>🏆 게임 결과 🏆</h2>
+        <div class="scoreboard">
+            <div class="myData">
+                <div>😆 승리 <span id="user_win">0</span></div>
+                <div>😓 패배 <span id="user_lose">0</span></div>
+                <div>😶 무승부 <span id="user_tie">0</span></div>
+            </div>
+            <div class="myWinRate">
+                나의 승률: <span id="user_win_rate">0%</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const resultCount = {
+            'tie': 0, // tie
+            'user': 0, // win
+            'computer': 0 // lose
+        };
+
+        function getRandomChoice(){
+            // 0 - rock, 1 - scissors, 2 - paper
+            const choices = ['rock', 'scissors', 'paper']; 
+            const rand_choice = Math.floor(Math.random() * choices.length);
+            return choices[rand_choice];
+        }
+
+        function getWinner(user_choice, com_choice){
+            if(user_choice === com_choice){
+                return 'tie';
+            } else if(
+                (user_choice === 'rock' && com_choice === 'scissors') ||
+                (user_choice === 'scissors' && com_choice === 'paper') ||
+                (user_choice === 'paper' && com_choice === 'rock')
+            ){
+                return 'user';
+            } else {
+                return 'computer';
+            }
+        }
+
+        
+
+
+  
+
+        function playGame(user_choice){
+            const com_choice = getRandomChoice();
+            console.log('user:'+user_choice);
+            console.log('com:'+com_choice);
+
+            const userBtn = document.getElementById(user_choice);
+            const userImgSrc = userBtn.getAttribute('src');
+            document.getElementById('user_choice_btn').innerHTML =
+                `<img src="${userImgSrc}" alt="${user_choice}">`;
+
+
+            const comBtn = document.getElementById(com_choice);
+            const comImgSrc = comBtn.getAttribute('src');
+            document.getElementById('com_choice_btn').innerHTML =
+                `<img src="${comImgSrc}" alt="${com_choice}">`;
+
+
+
+            const result = getWinner(user_choice, com_choice);
+            
+            
+            let resultText = '';
+            if(result === 'tie'){
+                resultText = '🤝 무승부';
+            } else if(result === 'user'){
+                resultText = '🎉 사용자가 이겼습니다!';
+            } else {
+                resultText = '💀 컴퓨터가 이겼습니다!';
+            }
+            document.getElementById('game_result').innerText = resultText;
+
+            // 점수 누적
+            resultCount[result]++;
+
+            // 스코어보드 갱신
+            document.getElementById('user_win').innerText = resultCount.user;
+            document.getElementById('user_lose').innerText = resultCount.computer;
+            document.getElementById('user_tie').innerText = resultCount.tie;
+        }
+
+
+        document.querySelectorAll('.play_btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const user_choice = button.querySelector('img').id;
+                playGame(user_choice);
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

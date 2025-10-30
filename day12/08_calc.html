@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+    <!-- 계산기 스타일 시트 -->
+    <link rel="stylesheet" href="08_calcStyle.css">
+
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly value="0">
+        <div class="buttons">
+            <button type="button" class = "numBtn" value="7">7</button>
+            <button type="button" class = "numBtn" value="8">8</button>
+            <button type="button" class = "numBtn" value="9">9</button>
+            <button type="button" class = "operatorBtn" value="+">+</button>
+
+            <button type="button" class = "numBtn" value="4">4</button>
+            <button type="button" class = "numBtn" value="5">5</button>
+            <button type="button" class = "numBtn" value="6">6</button>
+            <button type="button" class = "operatorBtn" value="-">-</button>
+
+            <button type="button" class = "numBtn" value="1">1</button>
+            <button type="button" class = "numBtn" value="2">2</button>
+            <button type="button" class = "numBtn" value="3">3</button>
+            <button type="button" class = "operatorBtn" value="*">*</button>
+
+            <button type="button" class = "numBtn" value=".">.</button>
+            <button type="button" class = "numBtn" value="0">0</button>
+            <button type="button" class = "clearBtn" id="clear">C</button>
+            <button type="button" class = "operatorBtn" value="/">/</button>
+
+            <button type="button" class = "equalBtn" id="equals">=</button>
+    </div>
+
+    <script>
+        const displayEl = document.getElementById('display'); // 입력창 요소
+
+        const allButtons = document.querySelectorAll('.buttons button'); // 전체 버튼
+        const numButtons = document.querySelectorAll('.numBtn'); // 숫자 버튼
+        const operatorButtons = document.querySelectorAll('.operatorBtn'); // 연산자 버튼
+        const equalBtn = document.getElementById('equals'); // = 버튼
+        const clearBtn = document.getElementById('clear'); // 초기화 버튼
+
+        const buttons = document.querySelector('.buttons'); // 계산기 전체 요소
+        const operatorSet = new Set(['+', '-', '*', '/']);
+
+        let isAfterEqual = false; // = 버튼 클릭 후 상태 확인용 변수
+
+        function operation(f,o,l){
+            let result = 0;
+            switch(o){
+                case '+': result = f + l; break;
+                case '-': result = f - l; break;
+                case '*': result = f * l; break;
+                case '/':
+                    if(l === 0){
+                        alert('0으로 나눌 수 없습니다');
+                        return 0;
+                    }
+                    result = f / l; break;
+                default: alert('올바른 연산자가 아닙니다');
+            }
+            return result;
+        } 
+
+        function getLastNumber(currExpresstion=''){
+            let currNum = '';
+
+            for(let i=currExpresstion.length-1; i>=0; i--){
+                if(operatorSet.has(currExpresstion[i])){break;}
+                currNum = currExpresstion[i] + currNum;
+            }
+
+            return currNum;
+        }
+
+
+        function getLastCh(currExpresstion=''){
+            return currExpresstion[currExpresstion.length -1];
+        }
+
+
+
+        // 숫자 버튼
+        numButtons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                // = 버튼 클릭 후 숫자 입력 시 숫자 바로 입력 불가
+                if(isAfterEqual){
+                    alert('연산자를 입력해주세요');
+                    return;
+                }
+                
+                let lastNum = getLastNumber(displayEl.value);
+
+                // 처음에 값 입력할 때 display 비우기
+                if(displayEl.value === '0'){
+                    if(button.value === '.'){
+                        displayEl.value += button.value; // 0. 으로 시작
+                        return;
+                    }
+                    displayEl.value = '';
+                }
+
+                // 마지막이 연산자로 끝날때
+                if(lastNum===''){
+                    // 연산자 다음 . 입력 시 앞에 0 자동으로 추가
+                    if(button.value === '.'){
+                        displayEl.value += '0.';
+                        return;
+                    }
+                }
+                if(lastNum.includes('.') && button.value === '.'){
+                    alert('소수점은 한 번만 입력할 수 있습니다');
+                    return;
+                }
+
+                displayEl.value += button.value;
+                isAfterEqual = false; // = 버튼 클릭 후 상태 초기화
+
+                // console.log('lastNum:'+lastNum);
+                // console.log(displayEl.value);
+                // console.log(typeof(displayEl.value));
+            });
+        })
+        
+        // 연산자 버튼
+        operatorButtons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                if(getLastCh(displayEl.value) === '.'){
+                    alert('마지막 입력이 소수점일 때는 연산자를 입력할 수 없습니다');
+                    return;
+                }
+                
+                // 연산자가 마지막일 경우
+
+                // if(getLastNumber(displayEl.value) === ''){
+                //     alert('연산자를 연속으로 입력할 수 없습니다');
+                //     return;
+                // }
+
+                if(getLastNumber(displayEl.value) === ''){
+                    displayEl.value = displayEl.value.slice(0, -1) + button.value;
+                }else{
+                    displayEl.value += button.value;
+                }
+
+                isAfterEqual = false; // = 버튼 클릭 후 상태 초기화
+                console.log(displayEl.value);
+                console.log(typeof(displayEl.value));
+            });
+        })
+        
+        equalBtn.addEventListener('click', () => {
+            // 끝이 . 으로 끝나는 경우 = 눌렀을 때 제거하고 저장
+            if(getLastCh(displayEl.value) === '.'){
+                displayEl.value = displayEl.value.slice(0, -1);
+            }
+
+            if(getLastNumber(displayEl.value) === ''){
+                displayEl.value = displayEl.value.slice(0, -1);
+            }
+
+            const result = eval(displayEl.value);
+            displayEl.value = result;
+            isAfterEqual = true; // = 버튼 클릭 후 상태 변경
+        });
+
+        clearBtn.addEventListener('click', () => {
+            displayEl.value = '0';
+            isAfterEqual = false; // = 버튼 클릭 후 상태 초기화 
+        });
+        
+        allButtons.forEach(button => {
+            button.addEventListener('click', () => {
+
+            button.classList.remove('pop-effect');
+            void button.offsetWidth;
+            button.classList.add('pop-effect');
+        });
+        })
+
+    </script>
+</body>
+</html>

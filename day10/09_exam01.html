@@ -43,10 +43,10 @@
                 let user = Math.floor(Math.random()*3);
         
                 console.log('-- '+(i+1)+'번째 게임 --');
+                console.log(`컴퓨터: ${toText(com)} / 사용자: ${toText(user)}`);
 
                 if(com===user){
                     user_tie++;
-                    console.log(`컴퓨터: ${toText(com)} / 사용자: ${toText(user)}`);
                     console.log('무승부');
                 }else if(
                     (com === 0 && user === 1)||
@@ -54,11 +54,9 @@
                     (com === 2 && user === 0)
                 ){
                     user_win++;
-                    console.log(`컴퓨터: ${toText(com)} / 사용자: ${toText(user)}`);
                     console.log('사용자 승리');
                 }else{
                     user_lose++;
-                    console.log(`컴퓨터: ${toText(com)} / 사용자: ${toText(user)}`);
                     console.log('컴퓨터 승리');
                 }
             }

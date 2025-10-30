@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>try_catch
+        :예상되는 에러를 try{code...} 영역에 배치하고, 만약 에러가 발생하면 catch(error){code...} 영역이 실행되도록 하는 문법
+    </h1>
+    <!-- 
+
+        try {
+            // 코드 블록
+        } catch (error) {
+            console.error(error);
+        }
+        정상작동코드
+
+        - try: 에러가 발생할 가능성이 있는 코드를 포함하는 블록
+        - catch(error): try 블록에서 에러가 발생했을 때 실행되는 블록
+
+
+
+    -->
+
+    <script>
+
+        let answer = 'abc';
+        try{
+            console.log('try 블록');
+            console.log(answer);
+
+            if(isNaN(answer)){
+                throw new Error('숫자가 아닙니다!'); // 강제 에러 발생
+            }
+
+        }catch(error){
+            console.error(error);
+            console.log(error.name);
+            console.log(error.message);
+        }finally{
+            console.log('무조건 실행되는 finally 블록');
+        }
+
+        console.log('process over');
+    </script>
+</body>
+</html>

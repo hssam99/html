@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+                <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button{
+            border: 1px solid black;
+            background-color: white;
+            padding: 5px 10px;
+
+        }
+
+        button:hover{
+            background-color: black;
+            color:white;
+            transition: ease-in-out 0.2s;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 
+        button 2개 준비
+        + 숫자 -
+        + => 깂이 1씩 증가
+        - => 값이 1씩 감소 (값이 0이면 더이상 감소x)
+    -->
+    
+
+    <button id = "plusBtn">+</button>
+    <h2 id="currNum"></h2>
+    <button id = "minusBtn">-</button>
+
+
+
+    <script>
+        // const currNum = document.getElementById('currNum');
+        let currNum = 0;
+        document.getElementById('currNum').innerText = currNum;
+
+
+        document.getElementById('plusBtn').addEventListener('click', function(){
+            currNum++;
+            document.getElementById('currNum').innerText = currNum;
+        });
+
+        document.getElementById('minusBtn').addEventListener('click', function(){
+            if(currNum <= 0) {
+                alert('더이상 감소할 수 없습니다');
+                return;
+            }else{
+                currNum--;
+                document.getElementById('currNum').innerText = currNum;
+            }
+        });
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>

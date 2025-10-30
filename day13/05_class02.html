@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class Car{
+            constructor(name, year){
+                this.name = name;
+                this.year = year;
+                this.model = ''
+                this.power = false; // true면 시동 켜짐, false면 시동 꺼짐
+                this.speed = 0; // 현재 속도
+
+            }
+            start(){
+                this.power = true;
+                console.log(`${this.name}의 시동이 켜졌습니다.`);
+            }
+    
+            stop(){
+                this.power = false;
+                this.speed = 0;
+                console.log(`${this.name}의 시동이 꺼졌습니다.`);
+            }
+
+            speedUp(amount){
+                if(this.power){
+                    this.speed += amount;
+                    console.log(`${this.name}의 현재 속도: ${this.speed}km/h`);
+                }else{
+                    console.log(`${this.name}의 시동이 꺼져있습니다. 시동을 켜주세요.`);
+                }
+            }
+
+            speedDown(amount){
+                if(this.power){
+                    this.speed -= amount;
+                    if(this.speed < 0) this.speed = 0;
+                    console.log(`${this.name}의 현재 속도: ${this.speed}km/h`);
+                }else{
+                    console.log(`${this.name}의 시동이 꺼져있습니다. 시동을 켜주세요.`);
+                }
+            }
+
+            status(){
+                console.log(`차량명: ${this.name}, 연식: ${this.year}, 모델: ${this.model}, 시동: ${this.power ? '켜짐' : '꺼짐'}, 속도: ${this.speed}km/h`);
+            }
+        }
+
+
+         const myCar1 = new Car('Tesla', 2025);
+         console.log(myCar1);
+
+
+        
+    </script>
+</body>
+</html>
