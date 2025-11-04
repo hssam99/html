@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jersey+10&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* 폰트 설정 */
+        .jersey-10-regular {
+            font-family: "Jersey 10", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* 여백 제거 */
+        *,
+        *::before,
+        *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        h1, h2, h3, p, ul { margin: 0; padding: 0; }
+
+
+        /* 바디정렬 */
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;  
+            line-height: 1.2;
+
+        }
+
+        h1, h3 { font-family: "Jersey 10", sans-serif;}
+
+        h1{font-size: 100px; margin-top: 50px; margin-bottom: 10px;}
+        h2{font-size: 30px; margin-bottom: 50px;}
+        h3{font-size:30px}
+
+
+        .header{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        .section{
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            /* margin-top: 20px; */
+        }
+
+        .data_card{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .data_card p{
+            line-height: 1.4;
+        }
+
+
+        .data_card ul { 
+            margin: 6px 0 0; 
+            padding-left: 16px;
+        }
+
+
+
+    </style>
+</head>
+
+
+
+<body>
+    <!-- https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json  -->
+
+
+    <div class="header">
+        <h1 id="h1"></h1>
+        <h2 id="h2"></h2>
+    </div>
+
+    <div class="section"></div>
+
+
+    <script>
+
+        const header = document.getElementById('header');
+        const section = document.getElementById('section');
+
+
+
+        // HTML 문서가 로딩되면 호출
+        // DOMContentLoaded 이벤트 사용
+        // HTML 문서가 완전히 로드되고 파싱되었을 때 발생
+        document.addEventListener('DOMContentLoaded', printData);
+
+
+
+        async function printData(){
+            const data = await fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+                .then(resp => resp.json())
+                .then(json => json)
+                .catch(err => console.log(err));
+    
+            console.log(data);
+            document.getElementById('h1').innerText = data.squadName;
+            document.getElementById('h2').innerText = 'HomeTown : '+data.homeTown + ' // Formed : ' + data.formed;
+
+
+            console.log(data.members[0]);
+
+            let str = '';
+            for(let i = 0; i< data.members.length; i++){
+                let member = data.members[i];
+                console.log(member);
+                str += `
+                <div class="data_card">
+                    <h3 class="card_name">${member.name}</h3>
+                    <p class="card_secretIdentity">SecretIdentity : ${member.secretIdentity}</p>
+                    <p class="card_age">Age : ${member.age}</p>
+                    <p class="card_powers">SuperPowers :</p>
+                    <ul class = "card_power_list">
+                        <li>${member.powers.join('</li><li>')}</li>
+                    </ul>
+                </div>
+`;
+            }
+
+            document.querySelector('.section').innerHTML = str;
+        }
+
+
+        printData();
+        
+    </script>
+</body>
+</html>

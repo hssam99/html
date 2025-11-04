@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        history 객체 : 브라우저가 저장하고 있는 방문페이지의 기록을 관리하는 객체 
+    </h1>
+    <!-- 
+        -window.history / window 생략가능.
+
+        -history.back() : 이전 페이지로 이동 (history.go(-1)과 동일)
+        -history.forward() : 다음 페이지로 이동 (history.go(1)과 동일)
+        -history.go(n) : n이 음수이면 이전페이지, n이 양수이면 다음페이지로 이동
+        -history.length : 방문기록의 개수
+
+        - 브라우저 별로 각자의 저장공간에 기록 (브라우저 기반)
+        - 보안 이슈로 접근 금지를 하는 브라우저도 있음
+        - 접근 방어를 해놓은 브라우저에서는 작동하지 않음.
+    -->
+    <a href="03_setTimeout.html">03_setTimeout.html</a>
+    <button id="back">back</button>
+    <button id="forward">forward</button>
+    <input type="text" id="n"><button id="go">go(n)</button>
+
+    <script>
+        document.getElementById('back').onclick = ()=>{
+            history.back();
+        };
+
+        document.getElementById('forward').onclick = ()=>{
+            history.forward();
+        };
+
+        document.getElementById('go').onclick = ()=>{
+            let n = parseInt(document.getElementById('n').value);
+            history.go(n);
+        };
+
+    </script>
+
+</body>
+</html>

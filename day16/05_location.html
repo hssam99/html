@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        location 객체는 브라우저의 주소표시줄에 입력에 관련된 객체
+    </h1>
+    <a href="06_history.html">06_history.html</a>
+
+    <!-- 
+        window.location / window 생략가능.
+
+        -location.href = 'url' : 해당 url로 이동 / histrory 객체에 저장
+        -location.replace('url') : 해당 url로 이동 / history 객체에 저장X (뒤로가기 불가)
+        -location.assign('url') : 해당 url로 이동 / history 객체에 저장
+         => href와 동일
+        -location.reload() : 현재 페이지 새로고침
+        -location.pathname : 현재 페이지의 경로
+    -->
+    
+    <button id="moveref">href 사용</button>
+    <button id="movereplace">replace 사용</button>
+    <button id="moveassgin">assign 사용</button>
+    <button id="movereload">reload 사용</button>
+
+    <script>
+        const btns = document.querySelectorAll('button');
+
+        document.getElementById('moveref').addEventListener('click', ()=>{
+            location.href = 'https://www.naver.com';
+        });
+
+        document.getElementById('movereplace').addEventListener('click', ()=>{
+            location.replace('https://www.daum.net');
+        });
+
+        document.getElementById('moveassgin').addEventListener('click', ()=>{
+            location.assign('https://www.google.com');
+        });
+
+        document.getElementById('movereload').addEventListener('click', ()=>{
+            location.reload();
+        });
+
+        console.log('현재 페이지 경로 : ', location.pathname);
+
+    </script>
+</body>
+</html>

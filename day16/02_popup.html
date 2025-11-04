@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        popup => window의 메소드 종류
+    </h1>
+
+    <!-- 
+        alert('메시지') : 경고창
+        confirm('메시지') : 확인창 (확인/취소)
+        prompt('메시지') : 입력창 
+        window.open('url','창이름','옵션(size, scroll)') : 새창열기
+        window.close() : 창닫기
+    -->
+
+    <button onclick="openWindow()">popup열기</button>
+    <button onclick = "closeWindow()">popup닫기</button>
+    <button onclick = "alertEx()">alert</button>
+    <button onclick="promptEx()">prompt</button>
+    <button onclick="confirmEx()" >confirm</button>
+
+    <h3 id="h3"></h3>
+    <script>
+        let popup;
+        function openWindow(){
+            popup = window.open('01_BOM.html','mypop','width=500, height=500');
+        }
+
+        function closeWindow(){
+            if(popup && !popup.closed){
+                popup.close();
+            }
+        }
+
+        function alertEx(){
+            alert('alert창 예시.');
+        }
+
+        function promptEx(){
+            const userInput = prompt('prompt창 예시. 값을 입력하세요.');
+            document.getElementById('h3').innerText = userInput;
+        }
+
+        function confirmEx(){
+            const result = confirm('confirm창 예시. 확인/취소 선택');
+            if(result){
+                document.getElementById('h3').innerText = '확인';
+            }else{
+                document.getElementById('h3').innerText = '취소';
+            }
+        }
+    </script>
+</body>
+</html>

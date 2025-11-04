@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        해체(Destructuring), 펼침(Spread) 문법:
+        javaScript의 데이터를 좀 더 유연하게 사용하기 위한 문법 : ES2018 이후 도입
+    </h1>
+
+    <script>
+        // destructuring : 해체 문법
+
+        let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+        let first1 = arr[0];
+        let second1 = arr[1];
+
+        let [first, second, third, forth] = arr;
+        console.log(first, second, third, forth);
+
+        let [kim, park, ...others] = arr;
+        console.log(kim, park, others);
+
+        //data exchange( 데이터 값 교환 )
+        let html = 89;
+        let java = 100;
+        console.log(html, java);
+
+        [html, java] = [java, html];
+        console.log(html, java);
+
+
+        const laptop = {
+            title: 'apple macbook m4 pro',
+            price: 3500000,
+            brand: 'apple',
+            cpu: 'm4',
+            ram: '16gb ram',
+            ssd: '512gb',
+            display: 'retina',
+            touchbar: true,
+            core: 'm4'
+        };
+
+        console.log(laptop.cpu, laptop.ram, laptop.ssd);
+
+        let {cpu, ram, ssd} = laptop; // 자주 사용
+        console.log(cpu, ram, ssd);
+
+        let oldArr = ['a', 'b', 'c'];
+        let newObj = {...oldArr}; // 0:'a', 1:'b', 2:'c'
+        console.log(newObj);
+        console.log(newObj['0']);
+
+    </script>
+</body>
+</html>\
