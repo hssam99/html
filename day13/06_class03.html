@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 계좌 myAccount, yourAccount
+        // 객체(object)를 사용하여 생성 / class를 생성
+
+        // 일반 객체로 생성
+
+        const myAccount = {
+            name: 'HONG',
+            balance: 0,
+            // 입금
+            deposit: function(amount){
+                this.balance += amount;
+                console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+            },
+            // 출금
+            withdraw: function(amount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            },
+            // 이체
+            transfer: function(amount, toAccount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    toAccount.balance += amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                    console.log(`${toAccount.name}님의 현재 잔액은 ${toAccount.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            }
+        }
+
+        const yourAccount = {
+            name: 'KIM',
+            balance: 10000,
+            deposit: function(amount){
+                this.balance += amount;
+                console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+            },
+            withdraw: function(amount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            },
+            transfer: function(amount, toAccount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    toAccount.balance += amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                    console.log(`${toAccount.name}님의 현재 잔액은 ${toAccount.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            }
+        }
+
+        // 내 계좌에 입금 10000원
+        myAccount.deposit(50000);
+        myAccount.withdraw(20000);
+        myAccount.transfer(10000, yourAccount);
+        console.log(myAccount, yourAccount);
+
+        console.log("-------------- class로 변경 -------------- ");
+
+        // class로 생성
+        class bankAccount{
+            constructor(name, balance){
+                this.name = name;
+                this.balance = balance;
+            }
+
+            deposit(amount){
+                this.balance += amount;
+                console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+            }
+            withdraw(amount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            }
+            
+            transfer(amount, toAccount){
+                if(this.balance >= amount){
+                    this.balance -= amount;
+                    toAccount.balance += amount;
+                    console.log(`${this.name}님의 현재 잔액은 ${this.balance}원 입니다.`);
+                    console.log(`${toAccount.name}님의 현재 잔액은 ${toAccount.balance}원 입니다.`);
+                }else{
+                    console.log('잔액이 부족합니다.');
+                }
+            }
+        }
+
+        const leeAcc = new bankAccount('lee', 10000);
+        const parkAcc = new bankAccount('park', 50000);
+        console.log(leeAcc);
+        console.log(parkAcc);
+
+        leeAcc.transfer(5000, parkAcc);
+        console.log(leeAcc);
+        console.log(parkAcc);
+    </script>
+</body>
+</html>

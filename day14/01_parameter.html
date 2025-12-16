@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>parameter : 자바스크립트의 파라미터 특징 / 기능</h1>
+    <!-- 
+        - 파라미터의 개수와 상관없이 함수(메소드) 명이 같다면 호출가능
+        - 파라미터의 개수가 불일치하여 받지 못하는 값이 있다면 undefined 처리
+        - 값을 받아오지 못하는 파라미터가 undefined 처리가 되는 것을 막기 위해서 기본값 설정 가능 => optional parameter
+        - 파라미터는 arguments라는 프로퍼티로 파라미터를 관리
+        - arguments 배열로 담겨서 관리됨
+        - optional parameter는 저장안됨
+        - optional parameter는 다른 파라미터보다 뒤에 위치해야함 (가장 뒤에 두는게 좋음)
+
+        - rest parameter : 남는(이외의, 남는 것들) 파라미터
+        - 사용할 파라미터는 일반 파라미터에 저장하고, 나머지 파라미터를 배열로 저장
+        - ... : spread 연산자라고 하고, 배열, 객체를 복사할 때도 사용
+    -->
+
+    <script>
+        // optional parameter
+        function testFunc(p1, p2, p3, p4=0, p5=0){
+            console.log(`p1 : ${p1}`);
+            console.log(`p2 : ${p2}`);
+            console.log(`p3 : ${p3}`);
+            console.log(`p4 : ${p4}`);
+            console.log(`p5 : ${p5}`);
+            console.log(arguments);
+        }
+        testFunc(1,2,3);
+        testFunc(1,2,3,4);
+        testFunc(1,2,3,4,5);
+
+
+        console.log('---------------------');
+
+
+        function testFunc2(){
+            console.log("parameter X");
+        }
+
+        // parameter 개수와 상관없이 호출 가능 (에러가 나지 않음 => 그냥 호출이 안됨)
+        testFunc2(1,2,3);
+
+        // optional parameter 구조
+        function opFunc(p, x){
+            let y=x;
+            if(y===undefined){
+                y=0;
+            }
+            console.log(p,y);
+        }
+        opFunc(1);
+
+        // rest parameter
+        function restFunc(a, b, ...rest){
+            let sum = 0;
+            console.log(a,b);
+            console.log(rest);
+            console.log(arguments);
+            sum = a + b;
+            for(let arg of rest){
+                sum += arg;
+            }
+            console.log(`합계 : ${sum}`);
+        }
+
+        restFunc(1,2,3,4,5);
+        restFunc(10,20); // rest는 빈배열로 처리
+        restFunc(5,15,25,35,45,55,65);
+    </script>
+</body>
+</html>

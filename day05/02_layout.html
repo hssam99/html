@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            width: 100%;
+            height: 80px;
+            background-color: black;
+            display: flex;
+        }
+        .field1, .field2, .field3, .field4, .field5{flex:1;}
+        
+        .top{background-color: red;}
+        .field1{background-color:green;}
+        .field2{background-color: blue;}
+        .field3{background-color:chocolate;}
+        .field4{background-color: yellow;}
+        .field5{background-color: blueviolet;}
+        .bottom{background-color: gray;}
+
+    </style>
+</head>
+<body>
+    <div class="container top"></div>
+    <div class="container">
+        <div class="field1"></div>
+        <div class="field2"></div>
+        <div class="field3"></div>
+    </div>
+    <div class="container">
+        <div class="field4"></div>
+        <div class="field5"></div>
+    </div>
+
+    <div class="container bottom"></div>
+</body>
+</html>

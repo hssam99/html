@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @font-face {
+            font-family: notosanskr;
+            src: url(../font/NotoSansKR-VariableFont_wght.ttf);
+        }
+
+        body{
+            font-family: notosanskr;
+            color: white;
+            text-align: center;
+        }
+        .box{
+            background-color: rgb(1, 169, 77);
+            width: 380px;
+            height: 56px;
+            border-radius: 4px;
+            display: flex;                  /* 가로로 배치 */
+            justify-content: center;        /* 가로 가운데 정렬 */
+            align-items: center;            /* 세로 가운데 정렬 */
+            gap: 10px;
+        }
+
+        #naver_logo{
+            width: 72px;
+            height: 14px;
+        }
+
+        a {
+            color: white;              /* 텍스트 색상 */
+            text-decoration: none;     /* 밑줄 제거 */
+        }
+
+        .box:hover{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div><a href="http://www.naver.com" class="box" target="_blank">
+            <img src="../images/Naver_Logotype.svg.png" alt="logo" id="naver_logo">
+            <span>로그인</span>
+        </a>
+
+
+    </div>
+</body>
+</html>

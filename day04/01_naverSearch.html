@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.4px;
+            color: var(--color-neutral-foreground-subtle-1);
+        }
+
+        .search_group{
+            width: 706px;
+            height: 58px;
+            border: 1px solid rgb(3, 199, 90);
+            border-radius: 100px;
+            position:relative;
+        }
+        
+        .logo-box{
+            position: absolute; left: 0px; top:0px;
+            width: 67px; height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-box{
+            width: 638px; height: 58px;
+            margin-left: 67px;
+            display: flex;
+            align-items: center;
+            /* gap:3px; */
+            background-color: black;
+        }
+
+        .search-box input{
+            flex:1; height: 100%;
+            border: none; outline: none;
+            background-color: transparent;
+            font-size: 15pt;
+            margin: 10px 5px;
+            background-color:aqua;
+        }
+
+        .btn-group{
+            height: 58px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color:blueviolet;
+            margin-right: 30px;
+
+        }
+
+        .search-box button{
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+        
+        #arrow-icon{width: 10px; height: 6px;}
+        #keyboard-icon{width: 24px; height: 14px;}
+        #search-icon{width:25px; height:25px;}
+        #logo{width: 24px; height: 24px;}
+
+
+    </style>
+</head>
+<body>
+    <div class="search_group">
+
+        <div class="logo-box">
+            <img src="../images/naver_logo.png" alt="" id="logo">
+        </div>
+
+        <form action="">
+            <div class="search-box">
+                <input type="text" name="search-keyword" id="" placeholder="검색어를 입력하세요">
+                
+                <div class="btn-group">
+                    <button type="button" class="keyboard">
+                        <img src="../images/btn_keyboard.png" alt="" id="keyboard-icon">
+                    </button>
+                    <button type="button" class="arrow">
+                        <img src="../images/btn_arrow.png" alt="" id="arrow-icon">
+                    </button>
+                    <button type="submit" class="search-icon">
+                        <img src="../images/naver_search_icon.png" alt="" id="search-icon"
+                        >
+                    </button>
+                </div>
+                
+            </div>
+        </form>
+
+
+    </div>
+
+</body>
+</html>

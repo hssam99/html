@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1{
+            font-size: 50px;
+            color: white;
+        }
+
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            z-index: 1;
+            background-color: rgba(87, 87, 87, 0.3);
+        }
+
+        .menu-container{
+            margin: 20px 0;
+        }
+
+        .menu-container button{
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border: #f0f0f0;
+            border: 1px solid white;
+            color: white;
+            background-color: transparent;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-container button:hover{
+            background-color: rgba(255, 255, 255, 0.3);
+            /* color: white; */
+        }
+
+        .img-container{
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background-color: #ffffff;
+        }
+
+        .img-container img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.6s ease;
+            /* animation: showUp 1.5s ease; */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>TRAVEL THE WORLD</h1>
+        <div class="menu-container">
+            <button id="home">HOME</button>
+            <button id="seoul">SEOUL</button>
+            <button id="newyork">NEWYORK</button>
+            <button id="paris">PARIS</button>
+        </div>
+    </div>
+    <div class="img-container">
+        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWlyJTIwdHJhdmVsfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000" alt="">
+    </div>
+
+    <script>
+        const homeBtn = document.getElementById('home');
+        const seoulBtn = document.getElementById('seoul');
+        const newyorkBtn = document.getElementById('newyork');
+        const parisBtn = document.getElementById('paris');
+        const imgContainer = document.querySelector('.img-container img');
+
+
+        function changeImg(url){
+            imgContainer.style.opacity = 0;
+            setTimeout(()=>{
+                imgContainer.src = url;
+                imgContainer.style.opacity = 1;
+            },200);
+        }
+
+        homeBtn.onclick = () => {
+            changeImg("https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YWlyJTIwdHJhdmVsfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000");
+        }
+        seoulBtn.onclick = () => {
+            changeImg("https://www.tripjalan.com/wp-content/uploads/2020/02/K2.png");
+        }
+        newyorkBtn.onclick = () => {
+            changeImg("https://cdn.wallpapersafari.com/20/91/73Tuyo.jpg");
+        }
+        parisBtn.onclick = () => {
+            changeImg("https://wallpaper.forfun.com/fetch/b0/b01199c4a392684cb7ce105d23cbfd85.jpeg");
+        }
+        
+        
+    </script>
+</body>
+</html>

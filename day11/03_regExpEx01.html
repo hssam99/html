@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+    <style>
+
+        h3{
+            color: red;
+        }
+
+        .green{
+            color: green;
+        }
+
+        .red{
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <span>파일명:</span>
+    <input type="file" id="file">
+    <button id="btn">확인</button>
+    <h3 id="result"></h3>
+
+
+
+
+    <script>
+
+        // validation
+        function imgValid(fileName){
+            console.log(fileName);
+            const regExp = /\.(jpg|png|gif|jpeg)$/i;
+            if(fileName.match(regExp)){
+                return true;
+            }
+            return false;
+        }
+
+        document.getElementById('btn').addEventListener('click', ()=>{
+            const file = document.getElementById('file').value;
+            let imgTrue = `<span class = "green">정상파일입니다.</span>`;
+            let imgFalse = `<span class = "red">잘못된 형식입니다.</span>`;
+
+            document.getElementById('result').innerHTML = imgValid(file) ? imgTrue : imgFalse;
+
+        });
+
+
+
+        // document.getElementById('btn').addEventListener('click', function() {
+        //     const file = document.getElementById('file').value;
+        //     // .txt, .jpg, .png, .gif, .pdf
+        //     const regExp = /\.(txt|jpg|png|gif)$/i;
+        //     if(regExp.test(file)) {
+        //         // alert('올바른 파일 형식입니다.');
+        //         document.getElementById('result').innerText = '올바른 파일 형식입니다.';
+        //     } else {
+        //         // alert('올바르지 않은 파일 형식입니다.');
+        //         document.getElementById('result').innerText = '올바르지 않은 파일 형식입니다.';
+        //     }
+        // });
+    </script>
+
+
+
+
+</body>
+</html>

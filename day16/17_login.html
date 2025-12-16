@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    body {
+        font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f1f4f9;
+    }
+
+    .signIn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        background-color: rgb(255, 255, 255);
+        /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+        border-radius: 20px;
+        padding: 50px;
+    }
+
+    .signIn h2{
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
+        margin-bottom: 20px;
+    }
+
+    .signIn a{
+        box-sizing: border-box;
+        margin:0;
+        padding:0;
+        margin-top: 20px;
+        color: gray;
+        font-size: 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    
+
+    .input-box{
+        display: flex;
+        flex-direction: column;
+        /* background-color: lightsalmon; */
+    }
+
+    .input-box input{
+        margin-bottom: 10px;
+        width: 200px;
+        height: 25px;
+        padding: 0 10px;
+    }
+
+    .btn-box{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .btn-box button{
+        width: 80px;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(240, 240, 240);
+        /* color: white; */
+        /* font-weight: bold; */
+        cursor: pointer;
+    }
+
+    .btn-box button:hover:not(:disabled){
+        background-color: rgba(204, 204, 204, 0.8);
+    }
+
+    </style>
+    
+</head>
+<body>
+    <div class="container signIn">
+        <h2>SIGN IN</h2>
+        <form action="">
+            <div class="input-box">
+                <input type="text" id="userId" placeholder="id">
+                <input type="password" id="userPw" placeholder="password">
+            </div>
+            <div class="btn-box">
+                <button id="signInBtn" type="submit" disabled>SIGN IN</button>
+                <button id="signUpBtn" type="button">SIGN UP</button>
+            </div>
+        </form>
+        <a href="">비밀번호 찾기</a>
+    </div>
+
+    <script>
+        // event input
+        // id : 8자 이상
+        // pw : 영어, 특수문자, 숫자를 포함한 8자 이상
+        // 두 조건이 맞을 때만 버튼 disabled 해제
+        // 객체.disabled = true => 비활성화 상태
+        // 객체.disabled = false => 활성화 샅애
+        // regExp
+
+
+        const userIdEl = document.getElementById('userId');
+        const userPwEl = document.getElementById('userPw');
+        const signInBtnEl = document.getElementById('signInBtn');
+        const signUpBtnEl = document.getElementById('signUpBtn');
+
+
+        // (?=...) : 일치해야한다
+        // . 모든 것
+        
+        const idReg = /^(?=.*[a-z])(?=.*[0-9])[a-z0-9]{8,}$/;
+        const pwReg = /^(?=.*[!@#$%^*+=-])(?=.*[0-9])(?=.*[a-z]).{8,25}$/;
+
+        function validate(){
+            const userId = userIdEl.value;
+            const userPw = userPwEl.value;
+
+            return idReg.test(userId) && pwReg.test(userPw); // 조건을 만족하면 true 반환
+        }
+
+        function updateButtonState(){
+            signInBtnEl.disabled = !validate();
+        }
+
+        // 사용자 입력 전 disabled 상태 확실하게 설정
+        updateButtonState();
+
+        // 사용자 입력 시 disabled 상태 업데이트
+        userIdEl.addEventListener("input", updateButtonState);
+        userPwEl.addEventListener("input", updateButtonState);
+
+        signInBtnEl.addEventListener('click', ()=>{
+            alert('로그인 성공');
+        })
+
+        signUpBtnEl.addEventListener('click', ()=>{
+            location.href = 'https://accounts.google.com/lifecycle/steps/signup/name?authuser=0&continue=https://www.google.com/?gfe_rd%3Dcr%26dcr%3D0%26ei%3DlwGQWuXwCIPI2ASphb6wCg%26gws_rd%3Dssl&dsh=S-1088208272:1762302072510038&ec=futura_exp_og_si_72776762_e&flowEntry=SignUp&flowName=GlifWebSignIn&hl=en&TL=ANzgctSzEMoy6Q_BnjZwxlm_80QfYsRv73-Bm2lD4OVMhHApqFH_imUxI8uUVyjg';
+        })  
+    </script>
+    
+</body>
+</html>

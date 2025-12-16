@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+    <style>
+        .subjectBtn{
+            border: 1px solid black;
+            background-color: white;
+            padding: 5px 10px;
+
+        }
+
+        .subjectBtn:hover{
+            background-color: black;
+            color:white;
+            transition: ease-in-out 0.2s;
+        }
+
+                /* 🔹 클릭해서 선택된 상태 유지 */
+        .subjectBtn.active {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        과목, 점수 input 2개 생성
+        추가 버튼 생성 => map에 과목(key), 점수(value) 저장
+        출력 버튼 생성 => ul => li 형태로 출력 html : 89
+        결과 버튼 생성 => 합계, 평균, 합격여부 (60점 이상이면 pass)
+    -->
+
+    <fieldset>
+        <legend>과목추가</legend>
+        과목:
+        <!-- <input type="text" id = "subject"> -->
+        <button type="button" class="subjectBtn" id="subjectBtn_korean">국어</button>
+        <button type="button" class="subjectBtn" id="subjectBtn_english">영어</button>
+        <button type="button" class="subjectBtn" id="subjectBtn_math">수학</button>
+        점수: <input type="text" id="score">
+
+        <button type="button" id="addBtn">추가</button>
+        <button type="button" id="printBtn">출력</button>
+        <button type="button" id="resultBtn">결과</button>
+    </fieldset>
+    <ul id="ul"></ul>
+    <h3 id="h3"></h3>
+
+    <script>
+        const myMap = new Map();
+        let currSubject = '';
+
+        const buttons = document.querySelectorAll('.subjectBtn');
+
+        console.log(buttons);
+
+        buttons.forEach(btn=>{
+            btn.addEventListener('click', function(){
+                // 🔹 다른 버튼의 active 제거
+                buttons.forEach(b => b.classList.remove('active'));
+
+                // 🔹 클릭한 버튼만 active 추가
+                this.classList.add('active');
+
+                if (this.id === 'subjectBtn_korean') currSubject = 'Korean';
+                if (this.id === 'subjectBtn_english') currSubject = 'English';
+                if (this.id === 'subjectBtn_math') currSubject = 'Math';
+                
+                console.log('현재 선택된 과목:', currSubject);
+
+            })
+        });
+
+
+        
+        document.getElementById('addBtn').addEventListener('click', function(){
+            if(!currSubject){
+                alert('과목을 먼저 선택하세요!');
+                buttons.forEach(b => b.classList.remove('active'));
+                currSubject = '';
+                return;
+            }
+
+            const score = Number(document.getElementById('score').value);
+            if(isNaN(score) || score<0 || score>100){
+                alert('1~100 사이의 점수를 입력하세요!');
+                buttons.forEach(b => b.classList.remove('active'));
+                currSubject = '';
+                return;
+            }
+
+            myMap.set(currSubject, score);
+            console.log(myMap);
+        });
+
+        document.getElementById('printBtn').addEventListener('click', function(){
+            let html = '';
+            myMap.forEach((v,k) => {
+                html += `<li>${k} : ${v}</li>`;
+            })
+            document.getElementById('ul').innerHTML = html;
+        });
+
+        document.getElementById('resultBtn').addEventListener('click', function(){
+            let sum = 0;
+            myMap.forEach(v=> sum+=Number(v));
+            let avg = (sum / myMap.size).toFixed(2);
+            let pass = avg>=60 ? true : false;
+
+            console.log(sum);
+            console.log(avg);
+            console.log(pass);
+
+            document.getElementById('h3').innerText = `sum : ${sum}, avg : ${avg}, pass : ${pass}`;
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>

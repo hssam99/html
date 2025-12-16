@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .toggleClass{
+            list-style: circle;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <!-- 
+        객체에서 제공하는 별도의 메소드 사용이 가능
+        자주 사용되는 메소드
+        - add() : 클래스 추가
+        - remove() : 클래스 삭제
+        - contains() : 해당 클래스를 포함하는지 확인
+        - toggle() ; 해당 클래스가 있으면 삭제, 없으면 추가
+
+        자바스크립트에서 스타일을 지정할 경우
+        tag.style.** : 넣는 속성의 양이 적을 경우
+        스타일이 많을 경우 class로 미리 스타일을 전부 지정하고,
+    -->
+
+    <ul id = "ul">
+        <li>classList</li>
+        <li>add() / remove() / contains() / toggle()</li>
+        <li>DOMTokenList 객체로 리턴</li>
+    </ul>
+    <button id="btn">ul button</button>
+
+    <script>
+        const ul = document.getElementById("ul");
+
+        console.log(ul);
+        console.log(ul.classList);
+        console.log(ul.classList.add('abc'));
+        console.log(ul.classList);
+        console.log(ul.classList.remove('abc'));
+        console.log(ul.classList);
+        console.log(ul.classList.contains('abc')); // false
+
+        document.getElementById("btn").addEventListener("click", ()=>{
+            ul.classList.toggle('toggleClass');
+            console.log(ul.classList);
+        });
+    </script>
+</body>
+</html>

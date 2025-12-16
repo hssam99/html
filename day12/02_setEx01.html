@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+</head>
+<body>
+    <!-- 
+        set을 생성하고, 1~10까지 랜덤수 5개를 채워서 출력(중복x)
+
+        얕은 복사(shallow copy)와 깊은 복사(deep copy) 개념 정리
+        - 얕은 복사 : 참조값만 복사 (원본이 바뀌면 복사본도 영향 받음), 메모리 공간을 공유하는 방식
+        - 깊은 복사 : 실제 값 자체를 복사 (원본이 바뀌어도 복사본은 영향 받지 않음)
+
+        set은 중복을 제거 하는 거 외에는 별로 할 수 있는게 없어서 array로 변환하는 거 많이 사용함
+        
+    -->
+
+    <h1 id = "result"></h1>
+
+
+    <script>
+        const set = new Set();
+        const result = document.getElementById('result')
+
+        while(set.size < 5){
+            set.add(Math.floor(Math.random()*10)+1);
+        }
+
+        // set.forEach((v)=>console.log(v)); // 콘솔 출력
+        console.log(set);
+        // set.forEach((v)=> result.innerText += v+'/'); // 화면 출력
+
+
+        // 1. string으로 변환
+        let setString = '';
+        set.forEach((v)=> setString += v + '/');
+        console.log(setString);
+
+        // 2. 배열로 변환
+        // spread operator (스프레드 연산자, 전개구문, ...)
+        const setArray = [...set];
+        console.log(setArray);
+        result.innerText += setArray;
+
+        // 3. Array.from() 메서드 이용
+        // 유사 배열 객체나 이터러블 객체를 얕은복사하여 새로운 배열 객체로 생성
+        const arr2 = Array.from(set);
+        console.log(arr2);
+        result.innerText = arr2;
+
+        // 깊은복사
+        const arr3 = [];
+        set.forEach((v)=> arr3.push(v));
+        console.log(arr3);
+    </script>
+    
+</body>
+</html>

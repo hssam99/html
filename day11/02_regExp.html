@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        정규표현식 (RegExp)
+        - 문자열의 패턴을 검사하고, 치환하고, 추출하는데 사용하는 도구
+        - 문자 내에서 특정 내용을 찾거나 대체, 발췌 하는데 사용
+        - regEx / regExp 이라고도 불림
+        - 특정 데이터를 탐색, 확인, 존재여부를 쉽게 파악하기 위한 규칙
+        - 주로 데이터 분석과 같은 분야에서 사용
+        - 웹 분야에서는 password, 첨부파일 규칙 검사, 회원가입 규칙 등에 사용
+        - 다른 언어에서도 거의 비슷한 방식으로 활용됨.
+    -->
+
+    <!-- 
+        정규표현식 문법
+        /패턴/플래그
+        
+        패턴 : 찾고자 하는 문자열의 규칙
+        플래그 : 패턴 검색 방법을 지정하는 옵션
+        
+        [example] /regexp/flag : /  / => 시작기호, 종료기호
+        - regexp : 패턴, flag : 옵션
+        - ('str').match(/regexp/) :str 문자열에서 regexp 패턴 찾기. 매칭되는 항목들을 배열로 리턴 없으면 null
+        - (/regexp/).test('str') : str 문자열에서 regexp 패턴이 존재하는지 확인. true/false 리턴
+        - ('str').replace(/regexp/, 'newStr') :
+            str 문자열에서 regexp 패턴을 찾아 newStr로 치환.
+        - ('str').split(/regexp/) : str 문자열을 regexp 패턴을 기준으로 쪼개 배열로 리턴
+        - ('str').search(/regexp/) : str 문자열에서 regexp 패턴이 처음 매칭되는 위치의 인덱스 리턴. 없으면 -1
+    -->
+    <!--
+        주요 플래그
+        g : 전역 검색 (문자열 전체에서 패턴 찾기)
+        i : 대소문자 구분 없이 검색
+        m : 여러 줄 모드 (각 줄의 시작과 끝 인식)
+
+        패턴 문자열
+        a-zA-Z : 영어알파벳 / ㄱ-ㅎ가-휳 : 한글 / 0-9 : 숫자
+        . : 모든 문자열 (숫자, 한글, 영어, 특수문자, 공백) => 줄바꿈은 X
+
+        주요 메타문자
+        \d : 숫자 (0-9)
+        \D : 숫자가 아닌 문자
+        \w : 단어 문자 (알파벳, 숫자, _) / 영숫자
+        \W : 단어 문자가 아닌 문자
+        \s : 공백 문자 (스페이스, 탭, 줄바꿈)
+        \S : 공백 문자가 아닌 문자
+        ^ : 문자열의 시작
+        /^: 시작문자
+        $ : 문자열의 끝
+        $/ : 끝문자
+        * : 0회 이상 반복
+        + : 1회 이상 반복
+        ? : 0회 또는 1회
+        {n} : n회 반복
+        {n,} : n회 이상 반복
+        {n,m} : n회 이상 m회 이하 반복
+        [...] : 대괄호 안의 문자 중 하나 매칭
+        | : OR 연산자 (A|B는 A 또는 B 매칭)
+        () : 그룹화 및 캡처
+
+        검색패턴
+        - | or (jpg|gif) / [jpg] => jpg or gif
+        - [] : or의 묶음 / 문자들 중 하나
+        /abc/ => 'abc'를 포함하는
+        /[abc]/ => 'a' or 'b' or 'c' 포함하는
+        /[a-z+]/ => 'a'부터 'z'사이의 문자 또는 '+' 포함하는
+        /[^abc]/ => 'a','b','c'가 아닌 문자 포함하는
+
+        - {min, max} : min~max까지 글자수 제한
+
+
+        주요 메서드
+        test() : 패턴이 문자열에 존재하는지 확인 (true/false 반환)
+        exec() : 패턴에 매칭되는 첫 번째 결과 반환 (없으면 null)
+        match() : 문자열에서 패턴에 매칭되는 모든 결과 배열로 반환
+        replace() : 패턴에 매칭되는 부분을 다른 문자열로 대체
+        search() : 패턴이 처음으로 매칭되는 위치 인덱스 반환
+        split() : 패턴을 기준으로 문자열을 나누어 배열로 반환
+    -->
+
+
+    <script>
+        let testText = 'This is JavaScript Regular Expression';
+
+        console.log(testText.match(/is/g));
+
+
+        // 정규표현식이 존재하는지 여부
+        console.log((/is/g).test(testText)); 
+
+        const fileName = ['photo.jpg', 'document.pdf', 'image.GIF',
+        'archive.zip', 'script.js', 'picture.gif'];
+
+        const imgFiles1=[];
+        const etcFiles1=[];
+
+        if((/\.jpg$/i).test(fileName[0])){
+            imgFiles1.push(fileName[0]);
+        } else {
+            etcFiles1.push(fileName[0]);
+        }
+
+
+        // foreach, filter
+        const imgFiles = fileName.filter(fname => (/\.(jpg|gif|png|jpeg)$/i).test(fname));
+        console.log('이미지파일;: '+imgFiles); // ['photo.jpg', 'image.GIF', 'picture.gif
+
+        const etcFiles = fileName.filter(fname=> !(/\.(jpg|png|gif|jpeg)$/i).test(fname));
+        console.log('기타파일: '+etcFiles);
+
+
+        const imgFiles2 = fileName.forEach(fname => {
+            if((/\.(jpg|gif|png)|jpeg$/i).test(fname)){
+                console.log(fname);
+            }
+        });
+
+        // \. > . 문자 자체
+        // i : 대소문자 구분 안함
+        // $ : 문자열 끝에서 일치해야함
+
+
+        // reduce => 누적
+        const result = fileName.reduce((acc, fname) => {
+            if(fname.match(/\.(jpg|gif|png|jpeg)$/i)){
+                acc.imgFiles.push(fname);
+            } else {
+                acc.etcFiles.push(fname);
+            }
+            return acc;
+        }, {imgFiles:[], etcFiles:[]});
+        console.log(result);
+        
+    </script>
+
+</body>
+</html>

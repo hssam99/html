@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        class : 자바 스크립트에서도 클래스 생성이 가능<div class=""></div>
+    </h1>
+
+
+    <script>
+        // class 클래스명 {
+        //     constructor(매개변수){
+        //         // 속성 정의
+        //     }
+
+        //     메서드명(){
+        //         // 기능 정의
+        //     }
+        // }
+
+        class Car{
+            constructor(name, year){
+                this.name = name;
+                this.year = year;
+                this.model = ''
+                this.power = false; // true면 시동 켜짐, false면 시동 꺼짐
+                this.speed = 0; // 현재 속도
+                
+            }
+        }
+
+       const myCar1 = new Car('Tesla', 2025);
+       console.log(myCar1);
+       myCar1.model = 'Model S';
+       console.log(myCar1);
+
+       const myCar2 = new Car('BMW', 2023);
+       console.log(myCar2);
+       myCar2.model = 'X5';
+       console.log(myCar2);
+
+       const myCar3 = new Car();
+       myCar3.name = 'Ferrari';
+       myCar3.year = 2024;
+       myCar3.model = 'Roma';
+       console.log(myCar3);
+    </script>
+</body>
+</html>

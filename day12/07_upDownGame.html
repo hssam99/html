@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 🔹 뷰포트 전체 높이 기준으로 중앙 정렬 */
+        }
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* margin: 10px; */
+            /* background-color: aqua; */
+        }
+
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button, input{
+            background: none;
+            height: 33px;
+            padding: 0 10px;
+            border: 2px solid black;
+            border-radius: 30px;
+            text-align: center;
+        }
+        
+        button{
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        button:hover{
+            background-color: black;
+            color: white;
+            transition: ease-in-out 0.1s;
+        }
+
+
+
+
+        #reloadBtn{
+            border: none;
+            padding: 0;
+            width: 30px; height: 30px;
+            background-color: transparent;
+            transition: transform 0.2s ease;
+        }
+        
+        #reloadBtn img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none; /* 이미지 클릭해도 버튼이 눌리도록 */
+        }
+        
+        #reloadBtn:hover {
+            transform: scale(1.1);
+            background-color: transparent;
+            color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+
+        #reloadBtn img:hover {
+            background-color: transparent;
+        }
+        
+
+
+
+
+        h1{
+            text-align: center;
+            font-size: clamp(32px, 6vw, 60px);
+            margin-bottom: 10px;
+        }
+
+        .player-box{
+            margin-top: 30px;
+            margin-bottom: 10px;
+
+        }
+
+        .option{
+            gap: 10px;
+        }
+
+        @keyframes pop {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 🔹 효과가 적용될 때만 실행 */
+        .pop-effect {
+            animation: pop 0.4s ease;
+        }
+
+        .correct {
+            color: #14b866; /* 예: 초록색 */
+            transition: color 0.3s ease;
+        }
+
+        .lifeBox{
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            gap: 5px;
+        }
+
+        .lifeBox img{
+            width: 20px;
+            height: 20px;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container main">
+        <h1 id="resultText">What Number am I?</h1>
+        <div class="player-box">
+            <div>
+                <input type="text" id = "userInput" placeholder="1~99">
+                <button type="button" id="submitBtn">SUBMIT</button>
+            </div>
+            <div class="lifeBox" id="lifeBox"></div>
+        </div>
+    </div>
+
+    <div class="container option">
+        <button type="button" id="makeRdNumBtn">START</button>
+        <button type="button" id="reloadBtn"><img src="https://www.freeiconspng.com/thumbs/reload-icon/arrow-refresh-reload-icon-30.png" alt=""></button>
+    </div>
+    
+    <script>
+        let rdNum = 0;
+        const maxLives = 5;
+        let livesLeft = maxLives;
+
+        function renderHearts() {
+            const lifeBox = document.getElementById('lifeBox');
+            lifeBox.innerHTML = ''; // 일단 비우고
+
+            for (let i = 0; i < livesLeft; i++) {
+                const heart = document.createElement('img');
+                heart.src = "https://cdn.pixabay.com/photo/2017/09/23/16/33/pixel-heart-2779422_1280.png";
+                heart.alt = "life";
+                lifeBox.appendChild(heart);
+            }
+        }
+
+        
+        document.getElementById('makeRdNumBtn').addEventListener('click', ()=>{
+            rdNum = Math.floor(Math.random()*99+1); // 1~99 랜덤수
+            console.log('rdNum:' + rdNum);
+
+             document.getElementById('resultText').innerText='Guess Me?';
+             document.getElementById('resultText').classList.remove('correct', 'pop-effect');
+
+            // 게임 시작 시 목숨 초기화
+            livesLeft = maxLives;
+            renderHearts();
+
+        })
+        
+        document.getElementById('submitBtn').addEventListener('click', ()=>{
+            const resultText = document.getElementById('resultText');
+            const userInput = Number(document.getElementById('userInput').value);
+            
+            // 아직 시작 안 했을 때
+            if(rdNum === 0){
+                alert('먼저 START를 누르세요!');
+                return;
+            }
+            
+            // 입력 유효성 검사
+            if(isNaN(userInput) || userInput < 1 || userInput > 99){
+                alert('1~99 사이의 숫자를 입력하세요!');
+                return;
+            }
+            
+            console.log('userInput:'+userInput);
+            livesLeft--;
+            console.log('시도 횟수:', livesLeft);
+            renderHearts();
+            if(livesLeft<=0){
+                resultText.classList.remove('correct', 'pop-effect');
+                resultText.innerText = '☠️ GAME OVER ☠️';
+                resultText.classList.remove('pop-effect');
+                void resultText.offsetWidth; // 강제로 리플로우(애니메이션 재시작용)
+                resultText.classList.add('pop-effect');
+                return;
+            }
+            
+            let result = '';
+            if(rdNum === userInput){
+                result = 'Correct!🤩';
+                resultText.classList.add('correct');   // 정답일 때 색상(초록색) 추가
+            } else {
+                result = (rdNum < userInput) ? 'Down ⬇️' : 'Up ⬆️';
+                resultText.classList.remove('correct'); // 오답이면 색상 제거
+            }
+
+
+            resultText.innerText=result;
+
+            // 🔹 애니메이션 초기화용으로 한 번 제거 후 다시 추가
+            resultText.classList.remove('pop-effect');
+            void resultText.offsetWidth; // 강제로 리플로우(애니메이션 재시작용)
+            resultText.classList.add('pop-effect');
+
+            document.getElementById('userInput').value='';  // 입력창 초기화
+        })
+
+        document.getElementById('reloadBtn').addEventListener('click', ()=>{
+            location.reload();
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1. 웹폰트 불러오기 -->
+    <link rel="stylesheet" crossorigin
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+
+    <!-- 2. 폰트 세팅용 CSS (01_fonts.css) -->
+    <link rel="stylesheet" href="font.css">
+
+
+</head>
+<body>
+    <h1>구조에 따른 자바 스크립트 객체 생성</h1>
+    <form action="">
+        이름: <input type="text" id="user_name"><br>
+        주소: <input type="text" id="user_addr"><br>
+        좋아하는리스트<br>
+        리스트1: <input type="text" id="userLike_li1"><br>
+        리스트2: <input type="text" id="userLike_li2"><br>
+        리스트3: <input type="text" id="userLike_li3"><br>
+        이메일: <input type="email" name="" id="user_email"><br>
+        내가좋아하는것: <input type="text" id="user_hobby"><br>
+        <button type="button" onclick="saveUserProfile()">객체로 전송</button>
+        <button type="button" onclick="printUserProfile()">표로 출력</button>
+    </form>
+
+    <h4 id="printResult"></h4>
+
+    <script>
+        const dataObj = {
+            name:'',
+            addr:'',
+            favor:{
+                favor1:'',
+                favor2:'',
+                favor3:''
+            },
+            email:'',
+            hobby:''
+        }
+        
+        function saveUserProfile(){
+            dataObj.name = document.getElementById('user_name').value;
+            dataObj.addr = document.getElementById('user_addr').value;
+            dataObj.favor.favor1 = document.getElementById('userLike_li1').value;
+            dataObj.favor.favor2 = document.getElementById('userLike_li2').value;
+            dataObj.favor.favor3 = document.getElementById('userLike_li3').value;
+            dataObj.email = document.getElementById('user_email').value;
+            dataObj.hobby = document.getElementById('user_hobby').value;
+
+            console.log(dataObj);
+            alert('전송되었습니다.');
+        }
+
+        function printUserProfile(){
+            const html = `
+                <table border="1" cellpadding="8" cellspacing="0">
+                <tr><th>이름</th><td>${dataObj.name}</td></tr>
+                <tr><th>주소</th><td>${dataObj.addr}</td></tr>
+                <tr>
+                    <th>좋아하는 리스트</th>
+                    <td>
+                        <ul>
+                            <li>${dataObj.favor.favor1}</li>
+                            <li>${dataObj.favor.favor2}</li>
+                            <li>${dataObj.favor.favor3}</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr><th>email</th><td>${dataObj.email}</td></tr>
+                <tr><th>취미</th><td>${dataObj.hobby}</td></tr>
+                </table>
+            `;
+      document.getElementById('printResult').innerHTML = html;
+        }
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+        @import url(reset.css);
+
+        @font-face {
+            font-family: gotham_rounded_bold;
+            src: url(../font/gothamrnd_bold.otf);
+        }
+        @font-face {
+            font-family: gotham_rounded_book;
+            src: url(../font/gothamrnd_book.otf);
+        }
+
+        body{
+            font-family: gotham_rounded_book;
+        }
+
+        .container{
+            width: 100%;
+            /* min-height: 100vh; */
+        }
+
+        .header{
+            /* background-color: aqua; */
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* 메뉴박스는 오른쪽 */
+            position: relative;        /* 로고의 absolute 기준 */
+            margin-bottom: 15px; margin-top: 10px;
+        }
+
+        #bape_header_logo{
+            height: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu-box{
+            font-family: gotham_rounded_book;
+            display: flex;
+            align-items: center;
+            font-size: 5px;
+            gap: 5px;
+            margin-right: 10px;
+        }
+
+        .menu-box>a:hover{
+            color:crimson;
+
+        }
+
+
+        .img{
+            background: url(../images/Bape-product1.jpg);
+            /* background-color: blue; */
+            background-position: center;
+            background-size: cover;
+            height: 200px;
+            /* background-size: 200px; */
+        }
+
+        .main{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            /* background-color:brown; */
+            margin: 30px 0 30px 0;
+            padding: 10px 0 10px 0;
+        }
+
+        .main > p{
+            font-family: gotham_rounded_bold;
+            font-size: 9pt;
+            margin-bottom: 20px;
+        }
+
+        .product_list{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product_card{
+            width:100px;
+            height: 140px;
+            /* background-color: white; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 8px;
+            background-color: transparent;
+            box-sizing:border-box;              /* ✅ 보더 포함해도 크기 유지 */
+            border:0.7px solid transparent;       /* ✅ 평소에도 1px 자리 확보 */
+            transition: border-color .2s ease;  /* ✅ 색만 부드럽게 */
+        }
+
+        .product_card:hover{
+            border-color:#000;
+        }
+
+        .product_card .thumb{
+            width: 100%;
+            height: 100px;
+            overflow: hidden;
+            display: block;
+            position: relative;
+        }
+        
+        .product_card .thumb > .text {
+            position: absolute;
+            top: 8px;                /* ✅ 프레임 안쪽으로 */
+            left: 8px;
+            z-index: 1;
+            padding: 2px 4px;
+            font-size: 5px;         /* 보기 쉬운 크기 */
+            color: #000000;             /* 대비 */
+            background: rgba(225, 255, 0, 0.9); /* 크림슨 배경 */
+            border-radius: 4px;
+            pointer-events: none;    /* 클릭 영역 방해 안 함 (선택) */
+            opacity: 0;                      /* 👈 기본은 안 보이게 */
+            transition: opacity 0.3s ease;   /* 부드럽게 */
+        }
+
+        /* hover 시에만 나타남 */
+        .product_card:hover .thumb > .text{
+            opacity: 1;                      /* 👈 이미지 hover 시 표시 */
+        }
+
+        .product_card .thumb > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;     /* 👈 비율 유지하며 잘 채우기 */
+            transition: transform 0.4s ease; /* 부드럽게 확대 */
+        }
+        
+        .product_card .thumb:hover img {
+            transform: scale(1.15);    /* 확대되지만 프레임은 고정 */
+        }
+
+
+
+        .product_card .title{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 6px;
+            font-weight: 800;
+            padding-top: 10px;
+            padding-bottom: 5px;
+
+            width: 90%;                 /* 💡 폭을 정해줘야 말줄임 적용됨 */
+            white-space: nowrap;        /*한 줄로 표시*/
+            overflow: hidden;           /* 넘치는 글자 숨기기 */
+            text-overflow: ellipsis;    /* ... 표시 */
+            text-align: center;
+        }
+
+        .product_card:hover{
+            color:crimson;
+        }
+
+
+        .product_card>.price{
+            font-size: 6px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+    <div class="header container">
+        <img src="../images/bape-logo.png" alt="" id="bape_header_logo">
+        <div class="menu-box">
+            <a href="">Content</a>
+            <a href="">Shop</a>
+            <a href="">Cart</a>
+            <a href="">Login</a>
+        </div>
+
+    </div>
+
+    <div class="img container"></div>
+    <div class="main container">
+        <p>Our New Product</p>
+        <div class="product_list">
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/0ZXTEM314101PBKX-pdp-2.jpg?v=1760611082" alt="">
+                    <div class="text">SALE</div>
+                </div>
+                <div class="title">STA College Relaxed Fit Tee</div>
+                <div class="price">₩178,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/0ZXSWM905151PBGX-pdp-2.jpg?v=1760700769&width=700" alt="">
+                </div>
+                <div class="title">BAPE X Def Jam Camo Shark Relaxed Fit Full Zip Hoodie</div>
+                <div class="price">₩724,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/0ZXSWW013132PBLX-pdp-1.jpg?v=1757648460&width=1200" alt="">
+                </div>
+                <div class="title">Abc Camo Rhinestone BAPE STA Crewneck Sweatshir</div>
+                <div class="price">₩514,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/AAPSWWD333XXPGYX-pdp-1.jpg?v=1757475694&width=1200" alt="">
+                </div>
+                <div class="title">AAPEUNVS zip-up hoodie</div>
+                <div class="price">₩374,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/AAPSWWD328XAPYEX-pdp-1.jpg?v=1757475643&width=1200" alt="">
+                </div>
+                <div class="title">AAPEUNVS embroidered polo sweatshirt</div>
+                <div class="price">₩257,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/0ZXSPW003532PIVX-pdp-1.jpg?v=1757045224&width=1200" alt="">
+                </div>
+                <div class="title">By Bathing Ape Sweat Shortse</div>
+                <div class="price">₩327,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/AAPKNWD340XAPIVX-pdp-1.jpg?v=1756886645&width=1200" alt="">
+                </div>
+                <div class="title">Moonface stripe zip-up sweater</div>
+                <div class="price">₩304,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/AAPPTWC660XXPBKX-pdp-1.jpg?v=1755707815&width=1200" alt="">
+                </div>
+                <div class="title">Logo jogger sweat pants</div>
+                <div class="price">₩210,000</div>
+            </a>
+            <a href="" class="product_card">
+                <div class="thumb">
+                    <img src="https://kr.bape.com/cdn/shop/files/0ZXSWW009152PBKX-pdp-2.jpg?v=1755243820&width=1200" alt="">
+                </div>
+                <div class="title">City Camo Tiger Shark Full Zip Hoodie</div>
+                <div class="price">₩654,000</div>
+            </a>
+        </div>
+    </div>
+    <div class="credit-container"></div>
+</body>
+</html>

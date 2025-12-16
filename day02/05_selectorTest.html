@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        :first child, :last child
+        :after
+        :before
+    -->
+
+    <style>
+        div{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .naver{
+            color:green;
+        }
+
+        .google{
+            color:blue;
+        }
+
+        .youtube{
+            color:red;
+        }
+
+        #title:hover{
+            color:black;
+        }
+
+        ol{
+            list-style: none;
+            padding: 0%;
+        }
+
+        ol>li{
+            font-size: 20px;
+            display: inline; /* blog tag 성격을 inline로 변경 */
+        }
+        ol>li:nth-child(even){
+            color:brown;
+        }
+        ol>li:nth-child(3n){
+            color:aquamarine;
+        }
+        ol>li:first-child,li:last-child{
+            font-weight: bolder;
+        }
+
+        ol>li::before{
+            content: "[";
+        }
+        ol>li::after{
+            content: "]";
+        }
+    </style>
+
+
+
+    <title>Document</title>
+</head>
+<body>
+    <div><a class = "naver" id="title" href="http://naver.com" target="_blank">naver</a></div>
+    <div><a class = "google" id="title" href="http://google.com" target="_blank">google</a></div>
+    <div><a class = "youtube" id="title" href="http://youtube.com" target="_blank">youtube</a></div>
+
+    <!-- 
+        전체글자크기 20px
+        짝수만 빨간색
+        3,6,9 : 초록색
+        1,10 : 굵게
+    -->
+        
+    <div><ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ol></div>
+</body>
+</html>

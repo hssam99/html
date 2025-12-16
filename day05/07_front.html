@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(reset.css);
+        .container{
+            width: 100%;
+            /* 화면의 전체 */
+            min-height: 100vh; 
+            background: linear-gradient(rgba(153, 153, 153, 0.1),rgba(0, 0, 0, 0.5)), url(../images/newyork_3.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header{
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            /* background-color: aqua; */
+        }
+
+        .header>img{
+            height: 5px;
+            filter: brightness(0) invert(1)
+        }
+
+        .menu-box{
+            display:flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .menu-box > a{
+            font-size: 4px;
+            color: white;
+        }
+
+        .container > .main{
+            width: 100%;
+            min-height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .main > button{
+            background-color: transparent;
+            border: 0.8px solid white;
+            color: white;
+            font-size: 4pt;
+            font-weight: 500;
+            margin-top: 10px;
+            cursor: pointer;
+
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            /* 변화를 위한 초기 상태 */
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(255,255,255,0);
+            
+        }
+        .main > button:hover{
+            background-color: white;
+            color: black;
+
+            transform: scale(1.05); /* 살짝 확대 */
+            box-shadow: 0 6px 15px rgba(125, 98, 201, 0.25); /* 부드러운 그림자 */
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../images/naver_logo.png" alt="">
+            <div class="menu-box">
+                <a href="">HOME</a>
+                <a href="">LOGIN</a>
+                <a href="">SIGNUP</a>
+                <a href="">BOARD</a>
+            </div>
+        </div>
+        <div class="main">
+            <p>WELCOME TO FRONT-END WORLD</p>
+            <button>LEARN MORE</button>
+        </div>
+    </div>
+</body>
+</html>

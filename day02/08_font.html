@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        font
+        글꼴 / 크기 / 스타일 / 굵기
+        font-family: 브라우저마다 지원하는 폰트가 달라서 보통 묶음으로 진행
+        지정폰트 쉽표로 구분하여 나열
+        한글폰트는 한글이름 영문이름 같이 사용
+        마지막 폰트는 기본형으로 지정 serif
+        폰트명에 띄어쓰기 있으면 따옴표로 묶어주기 (ex) "나눔 고딕"
+        font-size
+        font-style : 기울임 등
+        font-weight : 굵기 100~900, 700이 보통
+        font-family : 폰트 종류
+    -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> -->
+
+    <style>
+        @font-face{
+            font-family: F1-regular;
+            src: url(../font/Formula1-Regular_web_0.ttf);
+        }
+
+        .font{
+            font-family: F1-regular;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 100px;
+
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="font">hello</div>
+</body>
+</html>

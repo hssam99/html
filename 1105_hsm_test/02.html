@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        @font-face { font-family: bn_title; src: url(./font/BMKIRANGHAERANG-TTF.ttf);}
+        @font-face { font-family: bn_subtitle; src: url(./font/BMKkubulimTTF.ttf);}
+        @font-face {font-family: bn_air; src: url(./font/BMHANNAAir_ttf.ttf);}
+        @font-face {font-family: bn_regular; src: url(./font/BMDOHYEON_ttf.ttf);}
+        @font-face {font-family: ibmregular; src: url(./font/IBMPlexSansKR-Regular.ttf);}
+
+        @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+
+
+        
+        body{
+            background-color: rgb(42, 193, 188);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h1{ font-size: 100pt; font-family: bn_title;}
+        h3{ font-size: 20pt; font-family: bn_subtitle;}
+
+        .container {
+            width: min(1100px, 92vw);
+            margin: 20px auto 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            justify-items: center;
+        }
+
+        /* 음식카드 */
+        .food-box{
+            width: 250px;
+            height: 350px;
+            background-color: white;
+            border-radius: 20px;
+            padding-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s;
+            
+        }
+
+        .food-box:hover{
+            transition: transform 0.5s ease;
+            transform: scale(1.08);  
+        }
+        
+        .food-box>img{
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .food-box>.food-name{
+            font-family: bn_air;
+            font-size: 20pt;
+            font-weight: bolder;
+            margin-bottom: 7px;
+        }
+
+        .food-box>.details{
+            font-family: ibmregular;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .food-box>.details>.description{
+            font-size: 8pt;
+            margin-bottom: 12px;
+        }
+        
+        
+        .food-box>.details>.price{
+            font-family: bn_air;
+            font-size: 15pt;
+        }
+
+        .food-box>.details>.price>.price-before{
+            text-decoration: line-through;
+            color: rgb(167, 167, 167);
+        }
+        .food-box>.details>.price>.price-after{
+            font-weight: 900;
+        }
+
+        .food-box>.details button{
+            width: 90px;
+            height: 30px;
+            border: 0;
+            border: 1px solid black;
+            background-color: white;
+            margin-top: 10px;
+            font-size: 9pt;
+            font-weight: 600;
+        }
+
+        .food-box>.details button:hover{
+            background-color: black;
+            color: white;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <h1>배달의 민족</h1>
+    <h3>넌 먹을 때가 제일 예뻐</h3>
+    <div class="container">
+        <form action="">
+            <div class="food-box">
+                <img src="https://shakeshack.com/sites/default/files/styles/locations_mobile/public/location-about-02.jpg?itok=E6VOpWRc" jsaction="" class="sFlh5c FyHeAf iPVvYb" alt="Shake Shack at 23rd Street and Madison Ave New York, NY" jsname="kn3ccd">
+                <div class="food-name">쉑쉑버거</div>
+                <div class="details">
+                    <div class="description">뉴욕 버거를 맛보다! 핫한 버거 쉑쉑버거!</div>
+                    <div class="price">
+                        <span class="price-before">25,000</span>
+                        <span class="price-after">18,000</span>
+                    </div>
+                    <button type="submit">장바구니담기</button>
+                </div>
+            </div>
+        </form>
+        <form action="">
+            <div class="food-box">
+                <img src="https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/uploads/ds_12564_1588051620xPXHFWq.jpg" jsaction="" class="sFlh5c FyHeAf iPVvYb"  jsname="kn3ccd">
+                <div class="food-name">노모어피자</div>
+                <div class="details">
+                    <div class="description">피자계의 혁명! 에스파가 보증한다!</div>
+                    <div class="price">
+                        <!-- <span class="price-before">25,000</span> -->
+                        <span class="price-after">19,000</span>
+                    </div>
+                    <button type="submit">장바구니담기</button>
+                </div>
+            </div>
+        </form>
+        <form action="">
+            <div class="food-box">
+                <img src="https://ko.seeing-japan.com/wp-content/uploads/2017/08/d741bc292ecb9c8ba84dd2c9a2d96702_s_mini.jpg" jsaction="" class="sFlh5c FyHeAf iPVvYb"  alt="일본 도쿄 스시 맛집】현지인이 추천하는 인기 스시집 BEST10! | SeeingJapan" jsname="kn3ccd">
+                <div class="food-name">스시이안</div>
+                <div class="details">
+                    <div class="description">주머니가 가벼운 당신의 마음까지 생각한 착한 가격</div>
+                    <div class="price">
+                        <span class="price-before">23,000</span>
+                        <span class="price-after">15,000</span>
+                    </div>
+                    <button type="submit">장바구니담기</button>
+                </div>
+            </div>
+        </form>
+        <form action="">
+            <div class="food-box">
+                <img src="https://img.hankyung.com/photo/202409/01.37876571.1.jpg">
+                <div class="food-name">요아정</div>
+                <div class="details">
+                    <div class="description">역시 대세는 요아정!</div>
+                    <div class="price">
+                        <!-- <span class="price-before">17,000</span> -->
+                        <span class="price-after">17,000</span>
+                    </div>
+                    <button type="submit">장바구니담기</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

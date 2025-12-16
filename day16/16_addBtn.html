@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+      font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    </style>
+    
+</head>
+<body>
+    <button id="makeBtn">element Create</button>
+    <div id="zone"></div>
+
+    <script>
+        const makeBtnEl = document.getElementById('makeBtn');
+        const zoneEl = document.getElementById('zone');
+
+        makeBtnEl.onclick = ()=>{
+            const newBtn = document.createElement('button');
+            newBtn.textContent = 'new Btn';
+            zoneEl.appendChild(newBtn);
+        }
+
+        // 문서 전체에 리스너를 장착 => element target 확인
+        document.addEventListener('click', (e) =>{
+            console.log(e.target);
+            if(e.target.tagName === 'BUTTON' && e.target !== makeBtnEl){
+                const showTest = document.createElement('h3');
+                showTest.textContent = 'button Clicked';
+                document.body.appendChild(showTest);
+            }
+        });
+    </script>
+</body>
+</html>

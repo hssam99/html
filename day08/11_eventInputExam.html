@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        이름, 국어, 영어, 수학 점수를 입력받고 계산 버튼을 누르면
+        ul>li 점수를 출력하고, 합계와, 평균도 같이 출력
+    -->
+
+    <!-- Number() : string을 숫자로 변경 / 정수 + 실수 -->
+
+
+    <fieldset>
+        <legend>성적표</legend>
+        이름 <input type="text" id = "user_name" placeholder="이름을 입력하세요"><br>
+        <hr>
+        국어<input type="text" id = "user_kor" placeholder="국어 점수를 입력하세요"><br>
+        영어<input type="text" id = "user_eng" placeholder="영어 점수를 입력하세요"><br>
+        수학<input type="text" id = "user_math" placeholder="수학 점수를 입력하세요"><br>
+        <button onclick="getSum()">합계</button>
+        <button onclick="">평균</button>
+    </fieldset>
+
+    <ul id = 'ul'></ul>
+
+
+
+
+    
+
+
+    <script>
+
+        const getSum = () => {
+
+            let user_name = document.getElementById('user_name').value;
+            let user_kor = document.getElementById('user_kor').value;
+            let user_eng = document.getElementById('user_eng').value;
+            let user_math = document.getElementById('user_math').value;
+
+            let sum = parseInt(user_kor)+parseInt(user_eng)+parseInt(user_math);
+
+            // 이게 뭘까..?
+            const ul = document.getElementById('ul'); 
+
+            let str = `<li>name:${name}</li>`;
+            str += `<li>kor:${user_kor}</li>`;
+            str += `<li>eng:${user_eng}</li>`;
+            str += `<li>math:${user_math}</li>`;
+            str += `<li>sum:${sum}</li>`;
+
+            ul.innerHTML = str;
+
+        };
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
